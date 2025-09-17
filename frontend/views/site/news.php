@@ -1,0 +1,49 @@
+<?php
+    use yii\bootstrap5\Html;
+    use yii\widgets\ListView;
+
+    $this->blocks['bg'] = 'bs-primary';
+
+    $href = Yii::$app->request->get('href');
+    $this->title = $href ? $new->title : 'Новости АНВУЗ';
+    $href ? $this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => '/news'] : '';
+    $this->params['breadcrumbs'][] = $href ? $new->title : 'Новости';
+?>
+<div class="bs-primary news">
+    <div class="container">
+        <div class="row">
+            <?php if($new) { ?>
+                <?=$this->render('_detail_new', ['new' => $new]);?>
+            <?php } else { ?>
+                <div class="col-12 pb-5">
+                    <?=Html::tag('h2', $this->title, ['class' => 'fw-bold']);?>
+                </div>
+                <div class="mb-5 pb-5">
+                    <?=ListView::widget( [
+                        'dataProvider' => $dataProvider,
+                        'itemView' => '_item',
+                        'itemOptions' => [
+                            'class' => 'col-12 col-md-4'
+                        ],
+                        'options' => [
+                            'tag' => 'div',
+                            'class' => 'row g-3',
+                            'id' => 'list-wrapper',
+                        ],
+                        'layout' => '{items} <div class="d-flex justify-content-center py-4">{pager}</div>',
+                        'pager' => [
+                            'maxButtonCount' => 3, 
+                            'options' => ['id' => 'mypager', 'class' => 'pagination'],
+                            'linkOptions' => ['class' => "page-link"],
+                            'linkContainerOptions' => ['class' => 'page-item'],
+                            'disabledListItemSubTagOptions' => [
+                                'class' => 'page-link',
+                                'aria-label' => 'Next'
+                            ]
+                        ]
+                    ]);?>                  
+                </div>
+            <?php } ?>
+        </div>
+    </div>    
+</div>

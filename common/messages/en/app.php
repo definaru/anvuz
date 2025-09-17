@@ -1,0 +1,28 @@
+<?php
+// English
+return [
+    'today' => 'Today',
+    'month' => 'Month',
+    'week' => 'Week',
+    'day' => 'Day',
+    'list' => 'List',
+    'Sign In' => 'Sign In',
+    'Sign Up' => 'Sign Up',
+    'Sign in to start your session' => 'Sign in to start your session',
+    'Loading' => 'Loading',
+    'Email' => 'Email',
+    'Password' => 'Password',
+    'Remember Me' => 'Remember Me',
+    'OR' => 'OR',
+    'Sign in using Facebook' => 'Sign in using Facebook',
+    'Sign in using Google' => 'Sign in using Google',
+    'I forgot my password' => 'I forgot my password',
+    'Register a new account' => 'Register a new account',
+    'Thank you for registration' => 'Thank you for registration. Please check your inbox for verification email.',
+    'Request password reset' => 'Request password reset',
+    'Please fill out your email' => 'Please fill out your email. A link to reset password will be sent there.',
+    'Request new password' => 'Request new password',
+    'Check reset password' => 'Check your email for further instructions.',
+    'No reset password' => 'Sorry, we are unable to reset password for the provided email address.',
+    'Full name' => 'Full name', 
+];
