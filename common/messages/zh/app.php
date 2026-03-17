@@ -1,0 +1,28 @@
+<?php
+// Русский
+return [
+    'today' => '今天',
+    'month' => '一個月',
+    'week' => '一週',
+    'day' => '一天',
+    'list' => '清單',
+    'Sign In' => '登入',
+    'Sign Up' => '註冊',
+    'Sign in to start your session' => '登入以開始您的會話',
+    'Loading' => '載入中...',
+    'Email' => '電子郵件',
+    'Password' => '密碼',
+    'Remember Me' => '記住我',
+    'OR' => '或者',
+    'Sign in using Facebook' => '使用以下方式登入 Facebook',
+    'Sign in using Google' => '使用以下方式登入 Google',
+    'I forgot my password' => '我忘记了我的密码',
+    'Register a new account' => '注册新账户',
+    'Thank you for registration' => '感谢您的注册。请检查您的邮箱。',
+    'Request password reset' => '请求重置密码',
+    'Please fill out your email' => '请填写您的电子邮件地址。我们将向您发送密码重置链接。',
+    'Request new password' => '请求新密码',
+    'Check reset password' => '请检查您的电子邮件以获取进一步的指示。',
+    'No reset password' => '很抱歉，我们无法为指定的电子邮件地址重置密码。',
+    'Full name' => '您的全名', 
+];

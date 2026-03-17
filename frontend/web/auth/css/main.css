@@ -1,0 +1,47 @@
+@import url('/fonts.css');
+body {
+    --bs-body-bg: #e6e2f4;
+    box-sizing: border-box;
+    font-family: 'PTRootUIWebVF';
+}
+
+p {font-family: 'PTRootUIWebRegular'}
+label {font-family: 'PTRootUIWebMedium'}
+h1 {font-family: 'PTRootUIWebBold'}
+
+[data-bs-theme=dark] {
+    --bs-body-bg: #080416;
+    & .form-control {
+        --bs-border-color: #151515;
+        background-color: #000;
+    }
+    & .logotype {
+        color: #fff;
+    }
+    & .card {
+        --bs-card-bg: #080416;
+    }
+}
+
+.card {
+    --bs-card-bg: #fff;
+}
+
+.text-primary {
+    --bs-primary-rgb: #411fab;
+}
+.btn-primary {
+    --bs-btn-bg: #411fab;
+    --bs-btn-border-color: #411fab;
+    --bs-btn-hover-bg: #311780;
+    --bs-btn-hover-border-color: #311780;
+}
+
+a {
+    --bs-link-color-rgb: 82, 12, 222;
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+}
+.form-check-input:checked {
+    background-color: #411fab;
+    border-color: #411fab;
+}

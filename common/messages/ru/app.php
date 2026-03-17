@@ -1,0 +1,28 @@
+<?php
+// Русский
+return [
+    'today' => 'Сегодня',
+    'month' => 'Месяц',
+    'week' => 'Неделя',
+    'day' => 'День',
+    'list' => 'Список',
+    'Sign In' => 'Авторизация',
+    'Sign Up' => 'Регистрация',
+    'Sign in to start your session' => 'Войдите в систему, чтобы начать сеанс',
+    'Loading' => 'Загрузка...',
+    'Email' => 'Электронная почта',
+    'Password' => 'Пароль',
+    'Remember Me' => 'Запомнить меня',
+    'OR' => 'ИЛИ',
+    'Sign in using Facebook' => 'Войти с помощью Facebook',
+    'Sign in using Google' => 'Войти с помощью Google',
+    'I forgot my password' => 'Я забыл свой пароль',
+    'Register a new account' => 'Зарегистрируйте новый аккаунт',
+    'Thank you for registration' => 'Спасибо за регистрацию. Проверьте свой почтовый ящик.',
+    'Request password reset' => 'Запрос на сброс пароля',
+    'Please fill out your email' => 'Пожалуйста, заполните свой e-mail. На него будет отправлена ссылка для сброса пароля.',
+    'Request new password' => 'Запрос нового пароля',
+    'Check reset password' => 'Проверьте свой e-mail, чтобы получить дальнейшие инструкции.',
+    'No reset password' => 'К сожалению, мы не можем сбросить пароль для указанного e-mail.',
+    'Full name' => 'Ваше имя', 
+];
