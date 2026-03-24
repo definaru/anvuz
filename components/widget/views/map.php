@@ -753,7 +753,7 @@
                     <div class="card">
                         <div class="card-body">
                             <a :href="'/university/' + item.href" class="fw-bold link-body-emphasis">{{item.title}}</a>
-                            <p class="m-0">Ректор: {{item.person.lastname}} {{item.person.firstname}} {{item.person.middlename}}</p>
+                            <p class="m-0">Ректор: {{item.profile.lastname}} {{item.profile.firstname}} {{item.profile.middlename}}</p>
                         </div>
                     </div>
                 </li>

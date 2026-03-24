@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4">
-                <h4>Реквизиты АНВУЗ:</h4>
+                <h4 class="fw-bold">Реквизиты АНВУЗ:</h4>
             </div>
             <div class="col-12 col-md-5">
                 <div>

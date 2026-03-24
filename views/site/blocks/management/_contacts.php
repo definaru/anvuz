@@ -10,6 +10,7 @@
     <a 
         data-bs-toggle="collapse" 
         href="#contacts<?=$p["id"];?>" 
+        class="text-dark"
         role="button"
     >
         <u>Контакты</u>

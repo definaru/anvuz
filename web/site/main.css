@@ -28,7 +28,8 @@ body {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   gap: 40px;
 }
@@ -236,6 +237,14 @@ header {
     --bs-btn-border-color: #411fab;
     --bs-btn-hover-bg: #311780;
     --bs-btn-hover-border-color: #311780;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .line-clamp-3 {
