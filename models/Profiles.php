@@ -2,7 +2,7 @@
 
 namespace frontend\models;
 
-use Yii;
+//use Yii;
 
 /**
  * This is the model class for table "profiles".
@@ -33,7 +33,7 @@ class Profiles extends \yii\db\ActiveRecord
         return [
             [['position'], 'default', 'value' => '-'],
             [['lastname', 'firstname', 'section'], 'required'],
-            [['lastname', 'firstname', 'middlename', 'image', 'position', 'uuid'], 'string', 'max' => 255],
+            [['lastname', 'firstname', 'middlename', 'image', 'position', 'uuid', 'city'], 'string', 'max' => 255],
             [['uuid'], 'unique'],
         ];
     }
@@ -51,6 +51,7 @@ class Profiles extends \yii\db\ActiveRecord
             'image' => 'Фото',
             'position' => 'Должность',
             'uuid' => 'Ссылка',
+            'city' => 'Город',
             'section' => 'Иерархия',
             'create_date' => 'Дата создания',
         ];
@@ -69,7 +70,7 @@ class Profiles extends \yii\db\ActiveRecord
     }
 
 
-    public function getCity()
+    public function getLocation()
     {
         return $this->hasOne(City::class, ['id' => 'city'])->select('id, namecity');
     }

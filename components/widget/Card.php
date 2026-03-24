@@ -10,6 +10,7 @@ class Card extends Widget
     public $subtitle;
     public $icon;
     public $href = '';
+    public $document = '';
     public $padding = 'p-0';
     public $tag = 'h5';
     public $ratio = 'ratio-1x1';
@@ -31,6 +32,7 @@ class Card extends Widget
             'content' => $content,
             'icon' => $this->icon,
             'href' => $this->href,
+            'document' => $this->document,
             'padding' => $this->padding,
             'tag' => $this->tag,
             'ratio' => $this->ratio

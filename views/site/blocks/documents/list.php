@@ -27,17 +27,34 @@
             }
         }
     ');
+    $list = [
+        [
+            'title' => 'Устав АНВУЗ России',
+            'document' => '/data/document/Устав.pdf',
+            'href' => 'charter',
+            'subtitle' => 'Файл: Устав.pdf'
+        ],
+        [
+            'title' => 'Заявление о вступлении',
+            'document' => '/data/document/Форма заявления.docx',
+            'href' => 'zayavlenie-o-vstuplenii',
+            'subtitle' => 'Файл: Форма_заявления.docx'
+        ],
+    ];
+    // $content['content']['lists']
 ?>
 <section class="pb-5 document">
-    <div class="container my-5">
+    <div class="container my-5" style="height: 600px">
         <div class="row g-3 py-5">
-            <?php foreach($content['content']['lists'] as $item) { ?>
+            <?php foreach($list as $item) { ?>
                 <div class="col-md-4 col-12 d-grid h-100">
                     <?=Card::widget([
                         'title' => $item["title"],
                         'action' => 'Скачать документ',
                         'icon' => Icons::Download(),
                         'href' => '/document/'.$item["href"],
+                        'document' => $item["document"],
+                        'subtitle' => $item["subtitle"],
                         'padding' => 'p-3',
                         'ratio' => 'ratio-16x9',
                         'tag' => 'h3'

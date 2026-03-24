@@ -53,7 +53,8 @@ return [
             'rules' => [
                 '' => 'site/index',
                 '<action>' => 'site/<action>',
-                '/managements/<page:[\w_\/-]+>' => 'site/managements',
+                '/university/<href:[\w_\/-]+>' => 'site/university',
+                '/api/v1/universities/<region:[\w_\/-]+>' => 'api/universities',
                 '/api/v1/<action>' => 'api/<action>',
                 '/about/<href:[\w_\/-]+>' => 'site/about',
                 '/news/<href:[\w_\/-]+>' => 'site/news',

@@ -3,55 +3,45 @@ const body = document.querySelector('body');
 
 createApp({
     data() {
-        return { 
-            count: 0,
+        return {
             theme: localStorage.getItem('theme') === 'false' ? false : true,
-            show: false,
-            selectedData: {
-                title: '',
-                region: ''
-            },
+            selectedData: '',
+            region: '',
             wasValidated: false,
-            send: true,
-            form: {
-                title: '',
-                person: '',
-                email: '',
-                phone: ''
-            }
+            map: [],
+            show: false
         }
     },
     mounted() {
         this.updateHtmlClass();
     },
     methods: {
-        handleSubmit(event) {
-            const form = event.target
-
-            // включаем Bootstrap-валидацию
-            this.wasValidated = true
-
-            // если форма невалидна — Bootstrap сам покажет invalid-feedback
-            if (!form.checkValidity()) {
-                return
-            }
-
-            // если всё ок — можно отправлять данные
-            alert("Форма успешно отправлена!")
-            console.log("Данные:", this.form)
-        },
-
-        handlePathClick(event) {
+        async handlePathClick(event) {
             const target = event.target;
             const regionElement = target.closest('[region], [data-bs-title]');
             this.show = true;
             if (regionElement) {
-                this.selectedData = {
-                    title: regionElement.dataset.bsTitle || regionElement.getAttribute('data-bs-title'),
-                    region: regionElement.getAttribute('region')
-                }
+                this.selectedData = regionElement.getAttribute('region');
+                this.region = regionElement.dataset.bsTitle || regionElement.getAttribute('data-bs-title');
             }
+            try {
+                const response = await fetch(`/api/v1/universities/${this.selectedData}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const result = await response.json();
+                this.map = result
+            } catch (error) {
+                this.send = false;
+                console.error(error);
+            }
+
             console.log('Selected:', this.selectedData)
+        },
+        close() {
+            this.show = false;
         },
         toggleTheme() {
             this.theme = !this.theme;

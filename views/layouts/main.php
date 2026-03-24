@@ -8,6 +8,7 @@
     $robots = isset($this->blocks['robots']) ? $this->blocks['robots'] : 'index, follow';
     $menu = isset($this->blocks['menu']) ? $this->blocks['menu'] : 'bs-primary';
     $bg = isset($this->blocks['bg']) ? $this->blocks['bg'] : '';
+    $breadcrumbs = isset($this->blocks['breadcrumbs']) ? $this->blocks['breadcrumbs'] : '';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -37,13 +38,15 @@
         <?php $this->beginBody() ?>
             <?=$this->render('_header', ['menu' => $menu]);?>
             <main role="main" class="flex-shrink-0 <?=$bg;?>">
-                <div class="container<?=Yii::$app->controller->action->id === 'index' ? '' : ' pt-5 mt-5';?>">
-                    <?= Breadcrumbs::widget([
-                        'options' => ['class' => Yii::$app->controller->action->id === 'index' ? '' : 'py-3 mt-2'],
-                        'links' => isset($this->params['breadcrumbs']) ? 
-                            $this->params['breadcrumbs'] : [],
-                    ]) ?>
-                </div>    
+                <section class="<?=$breadcrumbs;?>">
+                    <div class="container<?=Yii::$app->controller->action->id === 'index' ? '' : ' pt-5 mt-5';?>">
+                        <?= Breadcrumbs::widget([
+                            'options' => ['class' => Yii::$app->controller->action->id === 'index' ? '' : 'py-3 mt-2'],
+                            'links' => isset($this->params['breadcrumbs']) ? 
+                                $this->params['breadcrumbs'] : [],
+                        ]) ?>
+                    </div>                    
+                </section>
                 <?=$content;?>
             </main>
             <?=$this->render('_footer');?>

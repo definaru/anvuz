@@ -40,8 +40,8 @@ class FooterData
                 'list' => [
                     [
                         'type' => 'a',
-                        'text' => 'Университетам',
-                        'link' => '/universities',
+                        'text' => 'Университеты',
+                        'link' => '/university',
                         'icon' => ''
                     ],
                     [
@@ -74,12 +74,12 @@ class FooterData
                         'link' => '/news',
                         'icon' => ''
                     ],
-                    [
-                        'type' => 'a',
-                        'text' => 'Проекты',
-                        'link' => '/projects',
-                        'icon' => ''
-                    ],
+                    // [
+                    //     'type' => 'a',
+                    //     'text' => 'Проекты',
+                    //     'link' => '/projects',
+                    //     'icon' => ''
+                    // ],
                     [
                         'type' => 'a',
                         'text' => 'Дирекция',

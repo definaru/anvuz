@@ -6,7 +6,7 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 
-class UniversitiesSearch extends Universities
+class UniversitySearch extends University
 {
 
     public function rules()
@@ -41,13 +41,10 @@ class UniversitiesSearch extends Universities
 
     public function search($params)
     {
-        $query = Universities::find();
-
+        $query = University::find();
+        $query->with('profile', 'contact');
         $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 6,
-            ],
+            'query' => $query
         ]);
 
         $this->load($params);
@@ -56,7 +53,12 @@ class UniversitiesSearch extends Universities
             return $dataProvider;
         }
 
-        $query->andFilterWhere(['id' => $this->id]);
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'person' => $this->person,
+            'date_create' => $this->date_create,
+            'date_update' => $this->date_update,
+        ]);
         $query->andFilterWhere(['like', 'title', $this->title])
               ->andFilterWhere(['like', 'description', $this->description])
               ->andFilterWhere(['like', 'logotype', $this->logotype])
@@ -67,10 +69,7 @@ class UniversitiesSearch extends Universities
               ->andFilterWhere(['like', 'additional', $this->additional])
               ->andFilterWhere(['like', 'contacts', $this->contacts])
               ->andFilterWhere(['like', 'href', $this->href])
-              ->andFilterWhere(['like', 'person', $this->person])
-              ->andFilterWhere(['like', 'region', $this->region])
-              ->andFilterWhere(['like', 'date_create', $this->date_create])
-              ->andFilterWhere(['like', 'date_update', $this->date_update]);
+              ->andFilterWhere(['like', 'region', $this->region]);
 
         return $dataProvider;
     }

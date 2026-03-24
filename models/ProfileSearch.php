@@ -45,7 +45,6 @@ class ProfileSearch extends Profiles
     public function search($params)
     {
         $query = Profiles::find();
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [

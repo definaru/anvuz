@@ -15,9 +15,10 @@ use frontend\data\management\Blocks as BlocksManagement;
 use frontend\data\news\Blocks as BlocksNews;
 use frontend\data\partner\Blocks as BlocksPartner;
 use frontend\data\science\Blocks as BlocksScience;
-use frontend\models\UniversitiesSearch;
+use frontend\models\UniversitySearch;
 use frontend\models\NewsSearch;
 use frontend\models\News;
+use frontend\models\University;
 use frontend\models\Documents;
 
 /**
@@ -81,7 +82,7 @@ class SiteController extends Controller
     {
         $content = BlocksPartner::list();
 
-        $searchModel = new UniversitiesSearch();
+        $searchModel = new UniversitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('partner', compact('content', 'searchModel', 'dataProvider'));
     }
@@ -127,6 +128,23 @@ class SiteController extends Controller
 
         $new = $href !== '' ? News::find()->where(['href' => $href])->one() : '';
         return $this->render('news', compact('content', 'searchModel', 'dataProvider', 'new'));
+    }
+
+    public function actionUniversity($href = '')
+    {
+        $model = University::find()
+            ->with('profile', 'contact')
+            ->where(['href' => $href])
+            ->one();
+                
+        $searchModel = new UniversitySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize = 5;
+
+        return $this->render('university', [
+            'model' => $model, 
+            'dataProvider' => $dataProvider
+        ]);
     }
 
 

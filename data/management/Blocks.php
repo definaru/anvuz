@@ -10,8 +10,8 @@ class Blocks
     public static function management()
     {
         return Profiles::find()
-            ->with('city', 'section', 'contacts')
-            ->orderBy(['section' => SORT_ASC])
+            ->with('location', 'section', 'contacts')
+            ->orderBy(['section' => SORT_ASC, 'lastname' => SORT_ASC])
             ->where(['is not', 'section', null])
             ->asArray()
             ->all();

@@ -17,7 +17,7 @@
     ]);
     $menuItems = [
         [
-            'label' => 'Об ассоциации', 
+            'label' => 'Об Ассоциации', 
             'url' => ['/site/about'],
             'linkOptions' => ['class' => $class]
         ],

@@ -19,7 +19,6 @@
     </button>      
 
     <?=$this->render('_language');?>   
-
     <?php if (Yii::$app->user->isGuest) { ?>
 
     <?php } else { ?>     
@@ -34,7 +33,8 @@
                 <?=Html::tag('li', $logout);?>
             </ul>
         </div>
-    <?php } ?>    
+    <?php } ?>  
+  
     
     */ ?>
 

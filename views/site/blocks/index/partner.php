@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-between">
                     <h2 class="fw-bold m-0 text-dark display-4">Наши партнёры</h2>
-                    <a href="/partner" class="text-secondary">Все партнёры</a>
+                    <a href="/university" class="text-secondary">Все партнёры</a>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@
                 </div>
                 <div class="row g-0 mb-5">
                     <div class="col-12 col-md-3">
-                        <h4>
+                        <h4 style="position: sticky;top: 111px">
                             <span class="badge text-bg-secondary px-3">
                                 <?=Yii::$app->formatter->asDateTime($new->create_date, 'php: j F, Y');?>
                             </span>

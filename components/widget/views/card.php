@@ -13,14 +13,14 @@
         }
     ');
     $class = isset($action) ? 
-        ['class' => 'btn bg-white py-2', 'data-bs-toggle' => 'tooltip', 'data-bs-title' => $action] : 
-        ['class' => 'btn bg-white py-2'];
+        ['class' => 'btn bg-white py-2', 'download' => true, 'data-bs-toggle' => 'tooltip', 'data-bs-title' => $action] : 
+        ['class' => 'btn bg-white py-2', 'download' => true];
 ?>
 <div class="ratio <?= $ratio;?>">
     <div class="card bg-body-tertiary border-0 shadow-sm h-100 <?=$padding;?>">
         <div class="card-header bg-transparent border-0 d-flex justify-content-between align-items-center py-3">
             <div></div>
-            <?= Html::a($icon, $href, $class);?>
+            <?= Html::a($icon, $document, $class);?>
         </div>
         <?=Html::tag('div', $content, ['class' => 'card-body bg-transparent']);?>
         <div class="card-footer border-0 bg-transparent">

@@ -5,7 +5,7 @@ namespace frontend\models;
 use Yii;
 
 /**
- * This is the model class for table "universities".
+ * This is the model class for table "university".
  *
  * @property int $id
  * @property string $title
@@ -17,17 +17,22 @@ use Yii;
  * @property string|null $types_training
  * @property string|null $additional
  * @property string|null $contacts
+ * @property int|null $person
+ * @property string|null $region
  * @property string|null $href
  * @property string|null $date_create
  * @property string|null $date_update
  */
-class Universities extends \yii\db\ActiveRecord
+class University extends \yii\db\ActiveRecord
 {
 
-    // UniversitiesSearch.php
+
+    /**
+     * {@inheritdoc}
+     */
     public static function tableName()
     {
-        return 'universities';
+        return 'university';
     }
 
     /**
@@ -36,13 +41,13 @@ class Universities extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description', 'logotype', 'photo', 'features', 'media', 'types_training', 'additional', 'contacts', 'href'], 'default', 'value' => null],
+            [['description', 'logotype', 'photo', 'features', 'media', 'types_training', 'additional', 'contacts', 'person', 'region', 'href'], 'default', 'value' => null],
             [['date_update'], 'default', 'value' => 'CURRENT_TIMESTAMP'],
             [['title'], 'required'],
-            [['description'], 'string'],
-            [['person', 'region'], 'integer'],
+            [['description', 'person'], 'string'],
             [['date_create', 'date_update'], 'safe'],
             [['title', 'logotype', 'photo', 'features', 'media', 'types_training', 'additional', 'contacts', 'href'], 'string', 'max' => 255],
+            [['region'], 'string', 'max' => 10],
             [['href'], 'unique'],
         ];
     }
@@ -63,13 +68,24 @@ class Universities extends \yii\db\ActiveRecord
             'types_training' => 'Types Training',
             'additional' => 'Additional',
             'contacts' => 'Contacts',
-            'href' => 'Href',
             'person' => 'Person',
             'region' => 'Region',
+            'href' => 'Href',
             'date_create' => 'Date Create',
             'date_update' => 'Date Update',
         ];
     }
 
+
+    public function getProfile()
+    {
+        return $this->hasOne(Profiles::class, ['id' => 'person'])->with('location', 'section', 'contacts');
+    }
+
+
+    public function getContact()
+    {
+        return $this->hasMany(Contacts::class, ['uuid' => 'href'])->select('id, uuid, type, link');
+    }
 
 }

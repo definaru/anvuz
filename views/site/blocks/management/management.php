@@ -1,6 +1,7 @@
 <?php
     use common\helpers\Html;
     use yii\helpers\Markdown;
+
     $this->registerCss('
         .avatar {
             width: 120px;
@@ -44,19 +45,19 @@
 ?>
 <section class="py-5 pb-5 bs-primary">
     <div class="container mb-5">
-        <ul class="nav nav-pills nav-fill mb-5" id="pills-tab" role="tablist">
+        <ul class="nav nav-pills nav-justified mb-5" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active text-decoration-none" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                <button class="nav-link active text-decoration-none fw-bold text-dark" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
                     Общее собрание АНВУЗ
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link text-decoration-none" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
-                    Состав экспертного совета при ГД
+                <button class="nav-link text-decoration-none fw-bold text-dark" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                    Состав экспертного совета при ГД РФ
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link text-decoration-none" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+                <button class="nav-link text-decoration-none fw-bold text-dark" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
                     Состав экспертного совета при МОН РФ
                 </button>
             </li>
@@ -69,7 +70,7 @@
                         <hr class="my-5" />
                         <?php foreach($content['content']['list'] as $group) { ?>
                             <div class="col-12 col-md-8 offset-md-2">
-                                <?=Html::tag('h4', $group['section'], ['class' => 'text-center fw-bold py-2 mt-2']);?>
+                                <?=Html::tag('h4', $group['section'], ['class' => 'text-center fw-bold py-2 mt-5']);?>
                                 <?php foreach ($group['profiles'] as $p) { $name = $p['lastname'].' '.$p['firstname'].' '.$p['middlename'];?>
                                     <div class="card border-0 mb-3">
                                         <div class="card-body">
@@ -86,7 +87,7 @@
                                                             <?=$p["position"];?>
                                                         </small>
                                                     </p>
-                                                    <?=Html::tag('h6', Html::tag('span', $p['city']['namecity'], ['class' => 'badge text-bg-secondary']));?>
+                                                    <?=Html::tag('h6', Html::tag('span', $p['location']['namecity'], ['class' => 'badge text-bg-secondary']));?>
                                                     <?=$this->render('_contacts', ['p' => $p]);?>
                                                 </div>
                                             </div>

@@ -40,7 +40,7 @@ class Blocks
                     [
                         'photo' => '/site/image/Ovp8Iq9YLYD2riIvdzo66P9fHkXkwQ.png',
                         'name' => 'Сподах Григорий Григорьевич',
-                        'position' => 'Исполнительный директор АНВУЗ России, кандидат экономических наук, доцент',
+                        'position' => 'Исполнительный <strong>директор АНВУЗ России</strong>, кандидат экономических наук, доцент',
                         'address' => '',
                         'phone' => '84959250380',
                         'email' => 'spodakh@anvuz.ru'

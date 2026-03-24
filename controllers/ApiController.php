@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\web\UploadedFile;
 //use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use frontend\models\University;
 use frontend\models\Profiles;
 use yii\helpers\FileHelper;
 
@@ -18,12 +19,12 @@ class ApiController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                //'only' => ['index'],
+                //'only' => ['university'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'image', 'introduction'],
+                        'actions' => ['index', 'image', 'introduction', 'university', 'universities'],
                         'allow' => true,
-                        'roles' => ['?'],
+                        'roles' => ['?', '@'],
                     ]
                 ]
             ]
@@ -88,6 +89,28 @@ class ApiController extends Controller
             'success' => true,
             'data' => $data
         ];
+        return self::Responce($res);
+    }
+
+
+    public function actionUniversity()
+    {
+        $res = University::find()
+            ->with('profile', 'contact')
+            ->asArray()
+            ->all();
+
+        return self::Responce($res);
+    }
+
+    public function actionUniversities($region)
+    {
+        $res = University::find()
+            ->with('profile', 'contact')
+            ->where(['region' => $region])
+            ->asArray()
+            ->all();
+
         return self::Responce($res);
     }
 

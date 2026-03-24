@@ -9,8 +9,13 @@
                 <?php /*<span class="badge text-bg-dark">Новости партнёров</span>*/ ?>
             </div>
             <a href="/news/<?=$model->href;?>">
-                <div class="object-fit-cover rounded-2 overflow-hidden" style="height: 250px;">
-                    <img class="w-100" src="<?=$model->image;?>" alt="<?=$model->title;?>" />
+                <div class="rounded-2 overflow-hidden" style="height: 250px;">
+                    <img 
+                        class="object-fit-cover w-100 h-100" 
+                        style="object-position: left"
+                        src="<?=$model->image;?>" 
+                        alt="<?=$model->title;?>" 
+                    />
                 </div>
             </a>
         </div>

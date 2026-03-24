@@ -6,7 +6,7 @@
     $data = [
         [
             'image' => '/data/about/45436е56.png',
-            'title' => 'Информация об ассоциации',
+            'title' => 'Информация об Ассоциации',
             'subtitle' => 'Общая информация',
             'href' => '/about/association'
         ],
@@ -36,7 +36,7 @@
                         <?php Card::begin([
                             'title' => $item['title'],
                             'icon' => Icons::arrowUpRight(),
-                            'subtitle' => $item['subtitle'],
+                            //'subtitle' => $item['subtitle'],
                             'href' => $item['href'],
                             'padding' => 'p-4',
                             'ratio' => 'ratio-1x1',
