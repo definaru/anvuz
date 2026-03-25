@@ -36,17 +36,23 @@
             transition: box-shadow 0.2s ease;
         }
     ');
-    $this->registerJs('
-    let scrollPosition = 0;
-    document.addEventListener("scroll", (event) => {
-        scrollPosition = window.scrollY;
-        const table = document.querySelector("#ui-table table thead");
-        Object.assign(table.style, {
-            top: scrollPosition-320 + "px",
-            boxShadow: "0 0 1px #000"
+    $this->registerJs(<<<JS
+        let scrollPosition = 0;
+        const links = document.querySelectorAll('#ui-table a');
+        links.forEach(link => {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
         });
-    });
-    ', View::POS_END);
+        document.addEventListener("scroll", (event) => {
+            scrollPosition = window.scrollY;
+            const table = document.querySelector("#ui-table table thead");
+            Object.assign(table.style, {
+                top: scrollPosition-320 + "px",
+                boxShadow: "0 0 1px #000"
+            });
+        });
+        JS, 
+    View::POS_END);
 ?>
 <section class="bg-primary position-relative" style="top:-5px">
     <div class="container">

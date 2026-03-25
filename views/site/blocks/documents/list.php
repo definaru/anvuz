@@ -48,7 +48,7 @@
         <div class="row g-3 py-5">
             <?php foreach($list as $item) { ?>
                 <div class="col-md-4 col-12 d-grid h-100">
-                    <?=Card::widget([
+                    <?php Card::begin([
                         'title' => $item["title"],
                         'action' => 'Скачать документ',
                         'icon' => Icons::Download(),
@@ -59,6 +59,7 @@
                         'ratio' => 'ratio-16x9',
                         'tag' => 'h3'
                     ]);?>
+                    <?php Card::end(); ?> 
                 </div>
             <?php } ?>
         </div>

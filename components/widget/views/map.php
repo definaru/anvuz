@@ -752,7 +752,8 @@
                 <li class="list-group-item bs-primary ps-0" v-for="item in map">
                     <div class="card">
                         <div class="card-body">
-                            <a :href="'/university/' + item.href" class="fw-bold link-body-emphasis">{{item.title}}</a>
+                            <?php /*<a :href="'/university/' + item.href" class="fw-bold link-body-emphasis">{{item.title}}</a>*/ ?>
+                            <p class="fw-bold link-body-emphasis m-0">{{item.title}}</p>
                             <p class="m-0">Ректор: {{item.profile.lastname}} {{item.profile.firstname}} {{item.profile.middlename}}</p>
                         </div>
                     </div>

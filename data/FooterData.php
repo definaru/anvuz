@@ -34,30 +34,30 @@ class FooterData
                     ],
                 ]
             ],
-            [
-                'image' => false,
-                'header' => 'Сотрудничество',
-                'list' => [
-                    [
-                        'type' => 'a',
-                        'text' => 'Университеты',
-                        'link' => '/university',
-                        'icon' => ''
-                    ],
-                    [
-                        'type' => 'a',
-                        'text' => 'Исследователям',
-                        'link' => '/researchers',
-                        'icon' => ''
-                    ],
-                    [
-                        'type' => 'a',
-                        'text' => 'Партнёрам',
-                        'link' => '/partners',
-                        'icon' => ''
-                    ],
-                ]
-            ],
+            // [
+            //     'image' => false,
+            //     'header' => 'Сотрудничество',
+            //     'list' => [
+            //         [
+            //             'type' => 'a',
+            //             'text' => 'Университеты',
+            //             'link' => '/university',
+            //             'icon' => ''
+            //         ],
+            //         [
+            //             'type' => 'a',
+            //             'text' => 'Исследователям',
+            //             'link' => '/researchers',
+            //             'icon' => ''
+            //         ],
+            //         [
+            //             'type' => 'a',
+            //             'text' => 'Партнёрам',
+            //             'link' => '/partners',
+            //             'icon' => ''
+            //         ],
+            //     ]
+            // ],
             [
                 'image' => false,
                 'header' => 'Информация',
@@ -68,10 +68,10 @@ class FooterData
                         'link' => '/about',
                         'icon' => ''
                     ],
-                    [
+                                        [
                         'type' => 'a',
-                        'text' => 'Новости',
-                        'link' => '/news',
+                        'text' => 'Документы',
+                        'link' => '/documents',
                         'icon' => ''
                     ],
                     // [
@@ -94,16 +94,16 @@ class FooterData
                 'list' => [
                     [
                         'type' => 'a',
-                        'text' => 'Документы',
-                        'link' => '/documents',
+                        'text' => 'Новости',
+                        'link' => '/news',
                         'icon' => ''
                     ],
-                    [
-                        'type' => 'a',
-                        'text' => 'Вступить в ассоциацию',
-                        'link' => '/auth/signup',
-                        'icon' => ''
-                    ],
+                    // [
+                    //     'type' => 'a',
+                    //     'text' => 'Вступить в ассоциацию',
+                    //     'link' => '/auth/signup',
+                    //     'icon' => ''
+                    // ],
                     [
                         'type' => 'a',
                         'text' => 'Наука',

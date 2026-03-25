@@ -14,6 +14,7 @@ class Card extends Widget
     public $padding = 'p-0';
     public $tag = 'h5';
     public $ratio = 'ratio-1x1';
+    public $position = '';
 
 
     public function init()
@@ -35,7 +36,8 @@ class Card extends Widget
             'document' => $this->document,
             'padding' => $this->padding,
             'tag' => $this->tag,
-            'ratio' => $this->ratio
+            'ratio' => $this->ratio,
+            'position' => $this->position
         ]);
     }
 }

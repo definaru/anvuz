@@ -29,8 +29,9 @@
                         'title' => $item['title'],
                         'icon' => $item['icon'],
                         'subtitle' => $item['subtitle'],
-                        'padding' => 'p-3',
-                        'ratio' => 'ratio-1x1',
+                        'padding' => 'p-2',
+                        'ratio' => 'ratio-16x9',
+                        'position' => 'left',
                         'tag' => 'h2'
                     ]);?>
                 </div>
