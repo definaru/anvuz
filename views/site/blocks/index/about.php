@@ -3,8 +3,18 @@
     use frontend\components\icons\Icons;
     use frontend\components\widget\Card;
     $about = $content['content']['about'];
+
     $this->registerCss('
-        #about svg path {fill:#411fab}
+        #about svg path {fill:#fff}
+        #about .card.bg-body-tertiary, .btn  {
+            background-color: #411fab !important;
+        }
+        #about span.text-secondary {
+            color: #fff !important;
+            font-size: 18px;
+            position: relative;
+            top: -10px;
+        }
     ');
 ?>
 <section id="about" class="py-5 my-5 about">
