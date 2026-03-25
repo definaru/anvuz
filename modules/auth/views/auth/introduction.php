@@ -1,6 +1,6 @@
 <?php
     use yii\helpers\Html;
-    $this->title = 'Заявка на вступление в ассоциацию';
+    $this->title = 'Заявка на вступление в Ассоциацию';
 
     $this->registerJsFile('/app/js/vue.js', ['position' => yii\web\View::POS_END]);
     $this->registerJsFile('/auth/js/introduction.js', ['position' => yii\web\View::POS_END]);

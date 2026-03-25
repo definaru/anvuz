@@ -1,6 +1,6 @@
 <?php
     use yii\bootstrap5\Html;
-    use frontend\components\icons\Icons;
+    //use frontend\components\icons\Icons;
     //$panel = Html::a('Личный кабинет', '/panel/profile', ['class' => 'dropdown-item']);
     $admin = Html::a('Админ-Панель', '/admin/panel', ['class' => 'dropdown-item']);
     $logout = Html::a('Выйти', '/auth/logout', ['class' => 'dropdown-item', 'data-method' => 'post']);
@@ -40,7 +40,7 @@
 
     <?=Html::tag(
         'div',
-        Html::a('Вступить в ассоциацию', '/auth/introduction', ['class' => 'btn btn-primary px-4 ctr']),
+        Html::a('Вступить в Ассоциацию', '/auth/introduction', ['class' => 'btn btn-primary px-4 ctr']),
         ['class' => 'd-flex']
     );?>
 </div>
