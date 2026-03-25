@@ -741,7 +741,7 @@
 </div>
 <template v-if="show">
     <div class="col-12 col-md-4">
-        <h3  class="d-flex justify-content-between align-items-center">
+        <h3 class="d-flex justify-content-between align-items-center">
             {{ region }} 
             <button class="btn" @click="close">
                 <?=Icons::close();?>

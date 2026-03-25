@@ -60,6 +60,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        if(env('MAINTENANCE') == '0') {
+            $this->layout = 'coming-soon';
+            return $this->render('comingsoon');
+        }
         $content = Blocks::list();
         return $this->render('index', compact('content'));
     }

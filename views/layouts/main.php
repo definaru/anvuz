@@ -19,7 +19,7 @@
             $this->registerMetaTag(['name' => 'theme-color', 'content' => $color]);
             $this->registerMetaTag(['name' => 'msapplication-navbutton-color', 'content' => $color]);
             $this->registerMetaTag(['name' => 'apple-mobile-web-app-status-bar-style', 'content' => $color]);    
-            $this->registerMetaTag(['name' => 'author', 'content' => 'Ray Vaigmi']);
+            $this->registerMetaTag(['name' => 'author', 'content' => 'АНВУЗ России']);
             $this->registerMetaTag(['name' => 'robots', 'content' => $robots]);
             $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
             //$this->registerMetaTag(['name' => 'yandex-verification', 'content' => '']);

@@ -18,6 +18,7 @@ class Blocks
         $title = 'Главная | АНВУЗ России';
         $description = 'Миссия АНВУЗ это создание и развитие единого российского образовательного пространства независимо от формы учредительства образовательных организаций.';
         $image = '';
+        $iconSize = 80;
         return [
             'seo' => [
                 'canonical' => $canonical,
@@ -157,25 +158,30 @@ class Blocks
                 ],
                 'about' => [
                     [
-                        'icon' => Icons::Composition(100),
-                        'title' => 'Состав Ассоциации',
-                        'href' => '/management'
+                        'icon' => Icons::Composition($iconSize),
+                        'title' => 'Вхождение',
+                        'subtitle' => 'в профессиональное сообщество'
                     ],
                     [
-                        'icon' => Icons::Activities(100),
-                        'title' => 'Деятельность',
-                        'href' => '/activities'
+                        'icon' => Icons::Activities($iconSize),
+                        'title' => 'Представление интересов ',
+                        'subtitle' => 'в органах государственной власти'
                     ],
                     [
-                        'icon' => Icons::Education(100),
-                        'title' => 'Обучение',
-                        'href' => '/education'
+                        'icon' => Icons::Education($iconSize),
+                        'title' => 'Участие в разработке',
+                        'subtitle' => 'законодательных актов'
                     ],
                     [
-                        'icon' => Icons::Join(100),
-                        'title' => 'Вступить в АНВУЗ',
-                        'href' => '/auth/signin'
+                        'icon' => Icons::Join($iconSize),
+                        'title' => 'Вхождение в профильные советы',
+                        'subtitle' => 'при органах государственной власти (ГД РФ, Минобрнауки и др)'
                     ],
+                    [
+                        'icon' => Icons::Stars($iconSize),
+                        'title' => 'Представление интересов',
+                        'subtitle' => 'сообщества на международной арене'
+                    ]
                 ],
                 'events' => [
                     [

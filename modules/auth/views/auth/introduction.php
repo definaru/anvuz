@@ -5,12 +5,28 @@
     $this->registerJsFile('/app/js/vue.js', ['position' => yii\web\View::POS_END]);
     $this->registerJsFile('/auth/js/introduction.js', ['position' => yii\web\View::POS_END]);
     $this->registerCss(<<<CSS
+        :root {
+            --placeholder-color: #adb5bd;
+        }
+        .form-control::placeholder {
+            color: var(--placeholder-color);
+            opacity: 1;
+        }
+        .form-control::-webkit-input-placeholder {
+            color: var(--placeholder-color);
+        }
+        .form-control::-moz-placeholder {
+            color: var(--placeholder-color);
+            opacity: 1;
+        }
         .display-6 {
             font-size: 1.5em;
         }
+        .form-text {font-size: 12px;}
         CSS
     );
     $label = 'form-label m-0';
+    $input = 'form-control bg-light';
 ?>
 <div id="introduction">
     <template v-if="isSuccess !== ''">
@@ -36,19 +52,19 @@
             <div>
                 <?= Html::label('Название ВУЗа', 'username', ['class' => $label]) ?>
                 <?= Html::input('text', 'title', '', [
-                    'class' => 'form-control', 
-                    'placeholder' => 'Инновационный Центр Знаний', 
+                    'class' => $input, 
+                    'placeholder' => 'Полное название ВУЗа', 
                     'required' => true,
                     'v-model' => 'form.title'
                 ]);?>
                 <?= Html::tag('span', 'Напишите название ВУЗа', ['class' => 'invalid-feedback']);?>
-                <?= Html::tag('span', 'Или указать аббревиатуру ВУЗа', ['class' => 'form-text']);?>
+                <?= Html::tag('span', 'Или указать аббревиатуру ВУЗа', ['class' => 'form-text text-body-tertiary']);?>
             </div>
             <div>
                 <?= Html::label('Контактное лицо (ФИО)', 'person', ['class' => $label]) ?>
                 <?= Html::input('text', 'person', '', [
-                    'class' => 'form-control', 
-                    'placeholder' => 'Булгаков Лев Тимофеевич', 
+                    'class' => $input, 
+                    'placeholder' => 'Ваше полное имя', 
                     'required' => true,
                     'v-model' => 'form.person'
                 ]);?>
@@ -57,8 +73,8 @@
             <div>
                 <?= Html::label('E-mail', 'email', ['class' => $label]) ?>
                 <?= Html::input('email', 'email', '', [
-                    'class' => 'form-control', 
-                    'placeholder' => 'university@yandex.ru', 
+                    'class' => $input, 
+                    'placeholder' => 'Ваш рабочий электронный ящик', 
                     'required' => true,
                     'v-model' => 'form.email'
                 ]);?>
@@ -68,7 +84,7 @@
             <div>
                 <?= Html::label('Телефон', 'phone', ['class' => $label]) ?>
                 <?= Html::input('tel', 'phone', '', [
-                    'class' => 'form-control', 
+                    'class' => $input, 
                     'placeholder' => '+74950001020',
                     'v-model' => 'form.phone'
                 ]);?>

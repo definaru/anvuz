@@ -1,9 +1,13 @@
 <?php
-    use yii\helpers\Html;
+    //use yii\helpers\Html;
     use frontend\components\icons\Icons;
+    use frontend\components\widget\Card;
     $about = $content['content']['about'];
+    $this->registerCss('
+        #about svg path {fill:#411fab}
+    ');
 ?>
-<section class="py-5 my-5 about">
+<section id="about" class="py-5 my-5 about">
     <div class="container">
         <?php /*
         <div class="row">
@@ -18,28 +22,21 @@
         </div>        
         */ ?>
 
-        <div class="row g-3 mt-5">
+        <div class="row g-3">
             <?php foreach($about as $item) { ?>
-            <div class="col-12 col-md-3">
-                <div class="rounded-3 bs-primary">
-                    <a href="<?=$item['href'];?>" class="ratio ratio-1x1">
-                        <div class="vstack justify-content-between h-100">
-                            <div class="ms-auto p-3 text-dark">
-                                <?=Icons::arrowUpRight(60);?>
-                            </div>
-                            <div class="text-center mb-2 text-primary">
-                                <?=$item['icon'];?>
-                            </div>
-                            <div class="text-center p-4">
-                                <?=Html::tag('h4', $item['title']);?>
-                            </div>                            
-                        </div>
-                    </a>
+                <div class="col-12 col-md-4">
+                    <?=Card::widget([
+                        'title' => $item['title'],
+                        'icon' => $item['icon'],
+                        'subtitle' => $item['subtitle'],
+                        'padding' => 'p-3',
+                        'ratio' => 'ratio-1x1',
+                        'tag' => 'h2'
+                    ]);?>
                 </div>
-            </div>
             <?php } ?>
-            <div class="col-12 col-md-4 offset-md-4 mt-md-5 mt-0">
-                <a href="/auth/introduction" class="btn btn-lg btn-primary py-3 px-5 d-flex align-items-center justify-content-center gap-2">
+            <div class="col-12 col-md-4">
+                <a href="/auth/introduction" class="btn btn-lg btn-primary h-100 px-5 d-flex align-items-center justify-content-center gap-2">
                     Присоединиться
                     <?=Icons::arrowRight();?>
                 </a>
