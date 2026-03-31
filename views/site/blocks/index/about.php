@@ -6,7 +6,7 @@
 
     $this->registerCss('
         #about svg path {fill:#fff}
-        #about .card.bg-body-tertiary, .btn  {
+        #about .card.bg-body-tertiary, #about .card .btn  {
             background-color: #411fab !important;
         }
         #about span.text-secondary {
