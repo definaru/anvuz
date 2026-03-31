@@ -2,8 +2,8 @@
     use yii\helpers\Html;
     $datetime = Yii::$app->formatter->asDateTime($model->create_date, 'php: j F, Y')
 ?>  
-<div class="card border-0 h-100">
-    <div class="card-header border-0 pb-0">
+<div class="card border-0 h-100 bg-white rounded-4">
+    <div class="card-header border-0 pb-0 bg-transparent">
         <div class="position-relative pt-2">
             <div class="position-absolute top-0 start-0 p-3">
                 <?php /*<span class="badge text-bg-dark">Новости партнёров</span>*/ ?>

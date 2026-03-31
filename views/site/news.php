@@ -4,7 +4,7 @@
     $href = Yii::$app->request->get('href');
 
     $this->blocks['menu'] = 'bg-white border-bottom';
-    $this->blocks['bg'] = $href ? 'bg-white' : 'bs-primary';
+    $this->blocks['bg'] = $href ? 'bg-white' : 'bg-light';
     $this->title = $href ? $new->title : 'Новости АНВУЗ';
     $href ? $this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => '/news'] : '';
     $href ? $this->params['breadcrumbs'][] = $this->title : '';

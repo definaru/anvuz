@@ -2,15 +2,16 @@
     use yii\bootstrap5\Html;
     use yii\widgets\ListView;
 
-    $news = $content['content']['news'];             
+    $news = $content['content']['news'];    
+    // bg-primary
 ?>
-<section class="py-5 bg-primary news">
+<section class="py-5 bg-light news">
     <div class="container">
         <div class="row">
             <div class="col-12 py-5">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h2 class="fw-bold m-0 text-white display-4">Новости АНВУЗ</h2>
-                    <a href="/news" class="text-white-50">Все новости</a>
+                    <h2 class="fw-bold m-0 display-4">Новости АНВУЗ</h2>
+                    <a href="/news" class="text-secondary">Все новости</a>
                 </div>                
             </div>
         </div>
@@ -31,7 +32,7 @@
 
         <div class="row mb-5">
             <div class="col-md-4 offset-md-4 text-center">
-                <a href="/news" class="btn btn-light btn-sm">Смотреть все новости</a>
+                <a href="/news" class="btn btn-primary btn-sm">Смотреть все новости</a>
             </div>
         </div>    
     </div>    

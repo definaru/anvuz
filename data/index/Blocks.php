@@ -43,7 +43,13 @@ class Blocks
                     ['name' => 'twitter:image', 'content' => $image]
                 ]
             ],
-            'blocks' => ['hero', 'about', 'news', 'partner'], //, 'events'
+            'blocks' => [
+                'hero', 
+                'about', 
+                'news',
+                //'events',
+                //'partner'
+            ],  
             'content' => [
                 'dataProvider' => $dataProvider,
                 'news' => [
