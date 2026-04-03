@@ -17,17 +17,17 @@
             <?php foreach($partner as $item) { ?>
             <div class="col-12 col-md-4">
                 <div class="rounded-4 bg-primary overflow-hidden">
-                    <a href="#" class="ratio ratio-1x1">
+                    <div class="ratio ratio-1x1">
                         <div class="vstack justify-content-between h-100">
                             <div></div>
                             <div class="text-center">
-                                <?=Html::img($item['image'], ['style' => 'width:150px', 'alt' => $item['title']]);?>
+                                <?=Html::img($item['image'], ['style' => 'width:200px;filter: invert(1);', 'alt' => $item['title']]);?>
                             </div>
                             <div class="text-center p-4 text-white" style="height: 150px">
                                 <?=Html::tag('h5', $item['title'], ['class' => 'm-0 line-clamp-3']);?>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
             <?php } ?>
