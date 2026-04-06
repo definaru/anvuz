@@ -45,7 +45,7 @@
 ?>
 <section class="py-5 pb-5">
     <div class="container mb-5">
-        <ul class="nav nav-pills nav-justified mb-5 bg-body-secondary p-2 rounded-3" id="pills-tab" role="tablist">
+        <ul class="nav nav-pills nav-justified mb-5 bs-primary p-2 rounded-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active text-decoration-none fw-bold text-dark" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
                     Общее собрание АНВУЗ
@@ -69,7 +69,7 @@
                         <h1 class="text-center mb-5">Совет АНВУЗ РОССИИ</h1>
                         
                         <?php foreach($content['content']['list'] as $group) { ?>
-                            <div class="col-12 col-md-8 offset-md-2 bg-light p-3 rounded-3 mb-5 vstack gap-3">
+                            <div class="col-12 col-md-8 offset-md-2 bs-primary p-3 rounded-3 mb-5 vstack gap-3">
                                 <?=Html::tag('h4', $group['section'], ['class' => 'text-center fw-bold pt-2']);?>
                                 <?php foreach ($group['profiles'] as $p) { $name = $p['lastname'].' '.$p['firstname'].' '.$p['middlename'];?>
                                     <div class="card border-0">

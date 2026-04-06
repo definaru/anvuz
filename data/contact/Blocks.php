@@ -51,7 +51,7 @@ class Blocks
                         'position' => 'Главный бухгалтер АНВУЗ России',
                         'address' => '',
                         'phone' => '84959250380',
-                        'email' => 'kruglikova@anvuz.ru'
+                        'email' => 'anvuz@anvuz.ru'
                     ]
                 ]
             ],
