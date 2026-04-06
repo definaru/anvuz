@@ -749,7 +749,7 @@
         </h3>
         <div v-if="map.length" class="overflow-y-auto w-100" style="max-height: 475px">
             <ul class="list-group">
-                <li class="list-group-item bs-primary ps-0" v-for="item in map">
+                <li class="list-group-item bg-body-tertiary border-0 ps-0" v-for="item in map">
                     <div class="card">
                         <div class="card-body">
                             <?php /*<a :href="'/university/' + item.href" class="fw-bold link-body-emphasis">{{item.title}}</a>*/ ?>

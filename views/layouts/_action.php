@@ -6,6 +6,7 @@
     $logout = Html::a('Выйти', '/auth/logout', ['class' => 'dropdown-item', 'data-method' => 'post']);
 ?>
 <div class="d-flex gap-2">
+    <?=$this->render('_language');?> 
     <?php /*
     <button class="btn" :class="[theme ? 'btn-light' : 'btn-dark']" @click="toggleTheme">
         <template v-if="theme">
@@ -18,7 +19,7 @@
         </template>
     </button>      
 
-    <?=$this->render('_language');?>   
+      
     <?php if (Yii::$app->user->isGuest) { ?>
 
     <?php } else { ?>     

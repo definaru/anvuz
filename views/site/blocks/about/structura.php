@@ -2,7 +2,12 @@
     use yii\helpers\Html;
     use frontend\components\widget\Card;
     use frontend\components\icons\Icons;
-
+    $this->registerCss('
+        #about .bs-primary {
+            background: #f8f9fa;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+    ');
     $data = [
         [
             'image' => '/data/about/45436е56.png',
@@ -28,7 +33,7 @@
     </div>
 </section>
 <?php if(empty($href)) { ?>
-    <section class="mt-1 py-5">
+    <section id="about" class="mt-1 py-5">
         <div class="container mb-4">
             <div class="row">            
                 <?php foreach($data as $item) { ?>

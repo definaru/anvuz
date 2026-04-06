@@ -2,7 +2,7 @@
     use common\helpers\Html;
     use common\helpers\PhoneNumberFormatter;
 ?>
-<section class="py-5 bg-body-tertiary">
+<section class="py-5 bs-primary">
     <div class="container my-5">
         <div class="row">
             <div class="col-12 col-md-4">

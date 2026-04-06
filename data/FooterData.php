@@ -118,7 +118,7 @@ class FooterData
     public static function isImage($item, $header)
     {
         return $item === true ? 
-            Html::a($header, '/', ['class' => 'my-4 d-block text-white']) : 
-            Html::tag('h5', $header, ['class' => 'my-4 d-block text-white fw-bold']);
+            Html::a($header, '/', ['class' => 'my-4 d-block text-primary']) : 
+            Html::tag('h5', $header, ['class' => 'my-4 d-block text-dark fw-bold']);
     }
 }

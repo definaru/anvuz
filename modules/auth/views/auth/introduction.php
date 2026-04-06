@@ -4,6 +4,16 @@
 
     $this->registerJsFile('/app/js/vue.js', ['position' => yii\web\View::POS_END]);
     $this->registerJsFile('/auth/js/introduction.js', ['position' => yii\web\View::POS_END]);
+    $this->registerJsFile('/app/js/phonemask.js', ['position' => yii\web\View::POS_END]);
+    $this->registerJs(<<<JS
+        const phoneInput = document.querySelector('input[name="phone"]');
+        if (phoneInput) {
+            IMask(phoneInput, {
+                mask: '+{7}0000000000'
+            });
+        }
+    JS);
+
     $this->registerCss(<<<CSS
         :root {
             --placeholder-color: #adb5bd;

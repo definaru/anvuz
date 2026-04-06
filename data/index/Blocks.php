@@ -48,7 +48,8 @@ class Blocks
                 'about', 
                 'news',
                 //'events',
-                'partner'
+                //'partner',
+                'test'
             ],  
             'content' => [
                 'dataProvider' => $dataProvider,

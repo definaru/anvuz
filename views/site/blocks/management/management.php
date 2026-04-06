@@ -83,12 +83,13 @@
                                                 <div class="mt-2">
                                                     <?=Html::tag('strong', $name, ['class' => 'h5 fw-bold']);?>
                                                     <p class="mb-1 d-grid" title="<?=$p["position"];?>" style="cursor:help">
-                                                        <small class="w-100 text-truncate">
+                                                        <!-- line-clamp-2 -->
+                                                        <small class="w-100">
                                                             <?=$p["position"];?>
                                                         </small>
                                                     </p>
                                                     <?=Html::tag('h6', Html::tag('span', $p['location']['namecity'], ['class' => 'badge rounded-pill text-primary bs-primary']));?>
-                                                    <?=$this->render('_contacts', ['p' => $p]);?>
+                                                    <?php // $this->render('_contacts', ['p' => $p]);?>
                                                 </div>
                                             </div>
                                         </div>

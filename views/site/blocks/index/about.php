@@ -5,12 +5,12 @@
     $about = $content['content']['about'];
 
     $this->registerCss('
-        #about svg path {fill:#fff}
-        #about .card.bg-body-tertiary, #about .card .btn  {
-            background-color: #411fab !important;
+        #about svg path {fill:#411fab}
+        #about .card .btn  {
+            color: #411fab !important;
         }
         #about span.text-secondary {
-            color: #fff !important;
+            color: #000 !important;
             font-size: 18px;
             position: relative;
             top: -10px;
@@ -19,19 +19,17 @@
 ?>
 <section id="about" class="py-5 my-5 about">
     <div class="container">
-        <?php /*
         <div class="row">
-            <div class="col-12 col-md-4 offset-md-4 text-center">
-                <h2 class="fw-bolder display-5 pb-4">Миссия АНВУЗ</h2>
-                <p class="text-secondary">
+            <!-- col-md-4 offset-md-4 -->
+            <div class="col-12  text-left">
+                <h2 class="fw-bolder display-5 pb-5">Преимущество с АНВУЗ России:</h2>
+                <!-- <p class="text-secondary">
                     Создание и развитие единого российского образовательного 
                     пространства независимо от формы учредительства 
                     образовательных организаций.
-                </p>
+                </p> -->
             </div>
-        </div>        
-        */ ?>
-
+        </div>   
         <div class="row g-3">
             <?php foreach($about as $item) { ?>
                 <div class="col-12 col-md-4">

@@ -20,7 +20,7 @@
     $header = $title ? $isTitle : '';
 ?>
 <div class="ratio <?= $ratio;?>">
-    <div class="card bg-body-tertiary border-0 shadow-sm h-100 <?=$padding;?>">
+    <div class="card bs-primary border-0 h-100 <?=$padding;?>">
         <div class="card-header bg-transparent border-0 d-flex justify-content-between align-items-center py-3">
             <?=$position === '' ? Html::tag('div', '') : '';?>
             <?=$document ? Html::a($icon, $document, $class) : Html::tag('span', $icon, $class);?>
