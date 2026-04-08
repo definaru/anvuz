@@ -10,13 +10,13 @@
     ');
     $data = [
         [
-            'image' => '/data/about/45436е56.png',
+            'image' => '/data/about/1.jpg',
             'title' => 'Информация об Ассоциации',
             'subtitle' => 'Общая информация',
             'href' => '/about/association'
         ],
         [
-            'image' => '/data/about/4556456е56.jpg',
+            'image' => '/data/about/2.jpg',
             'title' => 'Миссия АНВУЗ',
             'subtitle' => 'Сведение об Ассоциации',
             'href' => '/about/mission'
