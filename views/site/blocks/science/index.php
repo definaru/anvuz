@@ -58,7 +58,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4 offset-md-4 text-center py-4">
-                <?=Html::tag('h2', 'Наука', ['class' => 'fw-bold m-0 text-white']);?>
+                <?=Html::tag('h2', Yii::t('app', 'science'), ['class' => 'fw-bold m-0 text-white']);?>
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3 text-center py-3">
-                <?=Html::tag('h1', 'Перечень рецензируемых научных изданий ВАК <br />членов АНВУЗ РОССИИ', ['class' => '']);?> 
+                <?=Html::tag('h1', Yii::t('app', 'vak_publications_list', ['br' => '<br />']));?> 
             </div>
         </div>  
     </div>       

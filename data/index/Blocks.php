@@ -48,8 +48,7 @@ class Blocks
                 'about', 
                 'news',
                 //'events',
-                //'partner',
-                'test'
+                'partner'
             ],  
             'content' => [
                 'dataProvider' => $dataProvider,
@@ -58,27 +57,27 @@ class Blocks
                     [
                         'icon' => Icons::Composition($iconSize),
                         'title' => '',
-                        'subtitle' => 'Вхождение в профессиональное сообщество'
+                        'subtitle' => Yii::t('app', 'entering_professional_community')
                     ],
                     [
                         'icon' => Icons::Activities($iconSize),
                         'title' => '',
-                        'subtitle' => 'Представление интересов в органах государственной власти'
+                        'subtitle' => Yii::t('app', 'representation_of_interests')
                     ],
                     [
                         'icon' => Icons::Education($iconSize),
                         'title' => '',
-                        'subtitle' => 'Участие в разработке законодательных актов'
+                        'subtitle' => Yii::t('app', 'participation_in_legislation')
                     ],
                     [
                         'icon' => Icons::Join($iconSize),
                         'title' => '',
-                        'subtitle' => 'Вхождение в профильные советы при органах государственной власти (ГД РФ, Минобрнауки и др)'
+                        'subtitle' => Yii::t('app', 'membership_in_councils')
                     ],
                     [
                         'icon' => Icons::Stars($iconSize),
                         'title' => '',
-                        'subtitle' => 'Представление интересов сообщества на международной арене'
+                        'subtitle' => Yii::t('app', 'representation_international')
                     ]
                 ],
                 'events' => [
@@ -114,47 +113,47 @@ class Blocks
                 'partner' => [
                     [
                         'image' => '/data/partners/Big_Data_Research_Consortium.png',
-                        'title' => 'Консорциуму исследователей больших данных',
+                        'title' => Yii::t('app', 'big_data_consortium'),
                         'link' => '#'
                     ],
                     [
                         'image' => '/data/partners/Минобрнауки%20России.png',
-                        'title' => 'Министерство образования и науки Российской Федерации',
+                        'title' => Yii::t('app', 'ministry_of_education'),
                         'link' => '#'
                     ],
                     [
                         'image' => '/data/partners/cropped.png',
-                        'title' => 'Федеральная служба по надзору в сфере образования и науки',
+                        'title' => Yii::t('app', 'federal_supervision_service'),
                         'link' => '#'
                     ],
                     [
                         'image' => '/data/partners/cropped-ANIPES.png',
-                        'title' => 'Официальный портал частных университетов Камеруна',
+                        'title' => Yii::t('app', 'cameroon_universities_portal'),
                         'link' => '#'
                     ],
                     [
                         'image' => '/data/partners/Memorial_Museum_of_Cosmo.png',
-                        'title' => 'Мемориальный музей космонавтики',
+                        'title' => Yii::t('app', 'cosmonautics_museum'),
                         'link' => '#'
                     ],
                     [
                         'image' => '/data/partners/Консорциум%20Новая%20площадь.png',
-                        'title' => 'Консорциум ценностно-ориентированных образовательных организаций «Новая площадь»',
+                        'title' => Yii::t('app', 'new_square_consortium'),
                         'link' => '#'
                     ],
                     [
                         'image' => '/data/partners/Консорциум%20Память%20сильнее%20оружия.png',
-                        'title' => 'Консорциум «Память сильнее оружия»',
+                        'title' => Yii::t('app', 'memory_stronger_consortium'),
                         'link' => '#'
                     ],
                     [
                         'image' => '/data/partners/ABMES.png',
-                        'title' => 'Бразильская ассоциация сторонников высшего образования (ABMES)',
+                        'title' => Yii::t('app', 'brazilian_abmes'),
                         'link' => '#'
                     ],
                     [
                         'image' => '/data/partners/Российское%20профессорское%20собрание.png',
-                        'title' => 'Российское профессорское собрание',
+                        'title' => Yii::t('app', 'russian_professors_assembly'),
                         'link' => '#'
                     ]
                 ]

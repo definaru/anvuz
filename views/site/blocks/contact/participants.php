@@ -6,17 +6,22 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-12 col-md-4">
-                <h4 class="fw-bold">Дирекция АНВУЗ России:</h4>
+                <?=Html::tag(
+                    'h4', 
+                    Yii::t('app', 'directorate_ansu_russia').':', 
+                    ['class' => 'fw-bold']
+                );?>
             </div>
             <?php foreach($content['content']['participants'] as $item) { ?>
             <div class="col-12 col-md-4">
                 <?=Html::tag('h4', $item["name"]);?>
-                <?=Html::tag('small', $item["position"], ['class' => 'w-75 d-block', 'style' => 'height: 40px']);?>
-                <?=Html::tag('address', $item["address"]);?>
+                <?=Html::tag('small', $item["position"], ['class' => 'w-75 d-block', 'style' => 'height: 60px']);?>
+                <?php // Html::tag('address', $item["address"]);?>
                 <p class="m-0"><?=Html::tel(PhoneNumberFormatter::standart($item["phone"]), $item["phone"], ['class' => 'text-secondary']);?></p>
                 <p><?=Html::mailto($item["email"], null, ['class' => 'text-secondary']);?></p>
             </div>
             <?php } ?>
+            <div class="col-12"></div>
         </div>
     </div>
 </section>

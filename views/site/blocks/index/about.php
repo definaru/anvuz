@@ -1,5 +1,5 @@
 <?php
-    //use yii\helpers\Html;
+    use yii\helpers\Html;
     use frontend\components\icons\Icons;
     use frontend\components\widget\Card;
     $about = $content['content']['about'];
@@ -20,9 +20,8 @@
 <section id="about" class="py-5 my-5 about">
     <div class="container">
         <div class="row">
-            <!-- col-md-4 offset-md-4 -->
-            <div class="col-12  text-left">
-                <h2 class="fw-bolder display-5 pb-5">Преимущество с АНВУЗ России:</h2>
+            <div class="col-12 text-left">
+                <?= Html::tag('h2', Yii::t('app', 'advantage_with_anvuz').':', ['class' => 'fw-bolder display-5 pb-5']);?>
                 <!-- <p class="text-secondary">
                     Создание и развитие единого российского образовательного 
                     пространства независимо от формы учредительства 
@@ -45,10 +44,11 @@
                 </div>
             <?php } ?>
             <div class="col-12 col-md-4">
-                <a href="/auth/introduction" class="btn btn-lg btn-primary h-100 px-5 d-flex align-items-center justify-content-center gap-2">
-                    Присоединиться
-                    <?=Icons::arrowRight();?>
-                </a>
+                <?= Html::a(
+                    Yii::t('app', 'join').Icons::arrowRight(),
+                    '/auth/introduction',
+                    ['class' => 'btn btn-lg btn-primary h-100 px-5 d-flex align-items-center justify-content-center gap-2']
+                );?>
             </div>
         </div>
     </div>    

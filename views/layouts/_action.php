@@ -41,7 +41,7 @@
 
     <?=Html::tag(
         'div',
-        Html::a('Вступить в Ассоциацию', '/auth/introduction', ['class' => 'btn btn-primary px-4 ctr']),
+        Html::a(Yii::t('app', 'join_association'), '/auth/introduction', ['class' => 'btn btn-primary px-4 ctr']),
         ['class' => 'd-flex']
     );?>
 </div>

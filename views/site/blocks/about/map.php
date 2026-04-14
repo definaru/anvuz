@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <?=Map::widget([
-                'title' => 'Выберите регион'
+                'title' => Yii::t('app', 'select_a_region')
             ]);?>
         </div>
     </div>

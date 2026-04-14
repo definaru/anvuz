@@ -29,16 +29,16 @@
     ');
     $list = [
         [
-            'title' => 'Устав АНВУЗ России',
+            'title' => Yii::t('app', 'charter_of_the_ansu'),
             'document' => '/data/document/Устав.pdf',
             'href' => 'charter',
-            'subtitle' => 'Файл: Устав.pdf'
+            'subtitle' => Yii::t('app', 'file').': Устав.pdf'
         ],
         [
-            'title' => 'Заявление о вступлении',
+            'title' => Yii::t('app', 'application_for_membership'),
             'document' => '/data/document/Форма заявления.docx',
             'href' => 'zayavlenie-o-vstuplenii',
-            'subtitle' => 'Файл: Форма_заявления.docx'
+            'subtitle' => Yii::t('app', 'file').': Форма_заявления.docx'
         ],
     ];
     // $content['content']['lists']

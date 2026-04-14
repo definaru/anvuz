@@ -1,25 +1,27 @@
+<?php
+    use yii\helpers\Html;
+?>
 <section class="py-5 my-5">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4">
-                <h4 class="fw-bold">Реквизиты АНВУЗ:</h4>
+                <?=Html::tag(
+                    'h4', 
+                    Yii::t('app', 'contact_information_ansu').':', 
+                    ['class' => 'fw-bold']
+                );?>
             </div>
             <div class="col-12 col-md-5">
                 <div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item ps-0 pt-0">
-                            <p>
-                                Некоммерческая организация 
-                                "Ассоциация частных образовательных организаций 
-                                высшего образования и профессиональных 
-                                образовательных организаций России"                            
-                            </p>
+                            <?=Html::tag('p', Yii::t('app', 'non_profit_organization_ansu'));?>
                         </li>
                         <li class="list-group-item ps-0"><strong>ИНН:</strong> 7701133562</li>
                         <li class="list-group-item ps-0"><strong>КПП:</strong> 770101001</li>
                         <li class="list-group-item ps-0"><strong>ОГРН:</strong> 1037739662124</li>
-                        <li class="list-group-item ps-0"><strong>Юрид. адрес:</strong> 105005, <?= env('ADDRESS');?></li>
-                        <li class="list-group-item ps-0"><strong>Факт. адрес:</strong> 105005, <?= env('ADDRESS');?></li>
+                        <li class="list-group-item ps-0"><strong>Юрид. адрес:</strong> 105005, <?=Yii::t('app', 'address_moscow');?></li>
+                        <li class="list-group-item ps-0"><strong>Факт. адрес:</strong> 105005, <?=Yii::t('app', 'address_moscow');?></li>
                     </ul>
 
                     <ul class="list-group list-group-flush mt-5">

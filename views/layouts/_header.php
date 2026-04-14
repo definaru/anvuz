@@ -17,32 +17,32 @@
     ]);
     $menuItems = [
         [
-            'label' => 'Об Ассоциации', 
+            'label' => Yii::t('app', 'about_association'), 
             'url' => ['/site/about'],
             'linkOptions' => ['class' => $class]
         ],
         [
-            'label' => 'Члены АНВУЗ', 
+            'label' => Yii::t('app', 'members_anvuz'), 
             'url' => ['/site/management'],
             'linkOptions' => ['class' => $class]
         ],        
         [
-            'label' => 'Документы', 
+            'label' => Yii::t('app', 'documents'), 
             'url' => ['/site/documents'],
             'linkOptions' => ['class' => $class]
         ],
         [
-            'label' => 'Наука', 
+            'label' => Yii::t('app', 'science'), 
             'url' => ['/site/science'],
             'linkOptions' => ['class' => $class]
         ],
         [
-            'label' => 'Новости', 
+            'label' => Yii::t('app', 'news'), 
             'url' => ['/site/news'],
             'linkOptions' => ['class' => $class]
         ],
         [
-            'label' => 'Контакты', 
+            'label' => Yii::t('app', 'contacts'), 
             'url' => ['/site/contact'],
             'linkOptions' => ['class' => $class]
         ]

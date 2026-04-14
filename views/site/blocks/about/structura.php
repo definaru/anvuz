@@ -11,14 +11,14 @@
     $data = [
         [
             'image' => '/data/about/1.jpg',
-            'title' => 'Информация об Ассоциации',
-            'subtitle' => 'Общая информация',
+            'title' => Yii::t('app', 'about_the_association'),
+            //'subtitle' => 'Общая информация',
             'href' => '/about/association'
         ],
         [
             'image' => '/data/about/2.jpg',
-            'title' => 'Миссия АНВУЗ',
-            'subtitle' => 'Сведение об Ассоциации',
+            'title' => Yii::t('app', 'ansu_mission'),
+            //'subtitle' => 'Сведение об Ассоциации',
             'href' => '/about/mission'
         ],
     ]
@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4 offset-md-4 text-center py-4">
-                <?=Html::tag('h2', 'Об Ассоциации', ['class' => 'fw-bold m-0 text-white']);?>
+                <?=Html::tag('h2', Yii::t('app', 'about_association'), ['class' => 'fw-bold m-0 text-white']);?>
             </div>
         </div>
     </div>
@@ -63,7 +63,11 @@
         <div class="container py-5 mb-5">
             <div class="row py-5"> 
                 <div class="position-relative z-3">
-                    <a href="/about" class="btn mb-3 border-primary text-primary">&larr; Назад</a>
+                    <?= Html::a(
+                        '&larr;'.Yii::t('app', 'back'),
+                        '/about',
+                        ['class' => 'btn mb-3 border-primary text-primary']
+                    );?>
                 </div>
                 <?=$this->render('_'.$href, ['file' => $href]);?>
             </div>

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4 offset-md-4 text-center py-4">
-                <?=Html::tag('h2', 'Документы', ['class' => 'fw-bold m-0 text-white']);?>
+                <?=Html::tag('h2', Yii::t('app', 'documents'), ['class' => 'fw-bold m-0 text-white']);?>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-start pt-5">
-                <?=Html::tag('h2', 'Список документов', ['class' => 'fw-bold m-0']);?>
+                <?=Html::tag('h2', Yii::t('app', 'list_of_documents'), ['class' => 'fw-bold m-0']);?>
             </div>
         </div>
     </div>

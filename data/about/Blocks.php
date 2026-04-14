@@ -1,13 +1,15 @@
 <?php
 namespace frontend\data\about;
+use Yii;
 use yii\helpers\Url;
+
 
 class Blocks
 {
     public static function list()
     {
         $canonical = Url::to('about', true);
-        $title = 'Об ассоциации | АНВУЗ России';
+        $title = Yii::t('app', 'about_association').' | АНВУЗ России';
         $description = 'Информация об Ассоциации и структура АНВУЗа.';
         $image = '';
         return [

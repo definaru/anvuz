@@ -1,6 +1,7 @@
 <?php
 namespace frontend\data;
 
+use Yii;
 use yii\helpers\Html;
 use frontend\components\icons\Icons;
 
@@ -28,7 +29,7 @@ class FooterData
                     ],
                     [
                         'type' => 'address',
-                        'text' => env('ADDRESS'),
+                        'text' => Yii::t('app', 'address_moscow'),
                         'link' => '55.762581,37.682458',
                         'icon' => Icons::mapPin(20, '#ab95d1', 1.5)
                     ],
@@ -60,17 +61,17 @@ class FooterData
             // ],
             [
                 'image' => false,
-                'header' => 'Информация',
+                'header' => Yii::t('app', 'information'),
                 'list' => [
                     [
                         'type' => 'a',
-                        'text' => 'О нас',
+                        'text' => Yii::t('app', 'about_us'),
                         'link' => '/about',
                         'icon' => ''
                     ],
                                         [
                         'type' => 'a',
-                        'text' => 'Документы',
+                        'text' => Yii::t('app', 'documents'),
                         'link' => '/documents',
                         'icon' => ''
                     ],
@@ -82,7 +83,7 @@ class FooterData
                     // ],
                     [
                         'type' => 'a',
-                        'text' => 'Дирекция',
+                        'text' => Yii::t('app', 'directorate'),
                         'link' => '/management',
                         'icon' => ''
                     ]
@@ -90,11 +91,11 @@ class FooterData
             ],
             [
                 'image' => false,
-                'header' => 'Ресурсы',
+                'header' => Yii::t('app', 'resources'),
                 'list' => [
                     [
                         'type' => 'a',
-                        'text' => 'Новости',
+                        'text' => Yii::t('app', 'news'),
                         'link' => '/news',
                         'icon' => ''
                     ],
@@ -106,7 +107,7 @@ class FooterData
                     // ],
                     [
                         'type' => 'a',
-                        'text' => 'Наука',
+                        'text' => Yii::t('app', 'science'),
                         'link' => '/science',
                         'icon' => ''
                     ]

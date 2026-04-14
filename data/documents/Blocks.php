@@ -1,6 +1,7 @@
 <?php
 namespace frontend\data\documents;
 
+use Yii;
 use yii\helpers\Url;
 use frontend\models\Documents;
 
@@ -10,7 +11,7 @@ class Blocks
     public static function list()
     {
         $canonical = Url::to('documents', true);
-        $title = 'Документы | АНВУЗ России';
+        $title = Yii::t('app', 'documents').' | АНВУЗ России';
         $description = 'Юридическая информация об Ассоциации';
         $image = '';
         return [

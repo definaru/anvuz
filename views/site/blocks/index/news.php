@@ -1,21 +1,18 @@
 <?php
     use yii\bootstrap5\Html;
     use yii\widgets\ListView;
-
-    $news = $content['content']['news'];    
-    // bg-primary
+    $news = $content['content']['news'];
 ?>
 <section class="py-5 bg-light news">
     <div class="container">
         <div class="row">
             <div class="col-12 py-5">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h2 class="fw-bold m-0 display-4">Новости АНВУЗ</h2>
-                    <a href="/news" class="text-secondary">Все новости</a>
+                    <?=Html::tag('h2', Yii::t('app', 'news_anvuz'), ['class' => 'fw-bold m-0 display-4']);?>
+                    <?=Html::a(Yii::t('app', 'all_news'), '/news', ['class' => 'text-secondary']);?>
                 </div>                
             </div>
         </div>
-        
         <?=ListView::widget([
             'dataProvider' => $content['content']['dataProvider'],
             'itemView' => '/site/_item',
@@ -28,11 +25,10 @@
                 'id' => 'list-wrapper',
             ],
             'layout' => '{items}'
-        ]);?>  
-
+        ]);?>
         <div class="row mb-5">
             <div class="col-md-4 offset-md-4 text-center">
-                <a href="/news" class="btn btn-primary btn-sm">Смотреть все новости</a>
+                <?=Html::a(Yii::t('app', 'view_all_news'), '/news', ['class' => 'btn btn-primary btn-sm']);?>
             </div>
         </div>    
     </div>    

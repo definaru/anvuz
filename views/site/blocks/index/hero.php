@@ -1,11 +1,6 @@
 <?php
+    use yii\helpers\Html;
     use frontend\components\icons\Icons;
-    // $text = 'Входим в профессиональное сообщество.
-    // Представляем интересы в органах государственной власти.
-    // Участвуем в разработке законодательных актов.
-    // Входим в профильные советы при органах государственной власти (ГД РФ, Минобрнауки и др).
-    // Представляем интересы сообщества на международной арене.';
-    // Миссия АНВУЗ это создание и развитие единого российского образовательного пространства независимо от формы учредительства образовательных организаций.
 ?>
 <section style="background: rgba(65, 31, 171, 13%)" class="vh-100">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-100 h-100 stripe-color position-absolute top-50 start-50 translate-middle" viewBox="0 0 1218 527" fill="none">
@@ -14,11 +9,7 @@
     <div class="hero d-flex justify-content-center align-items-end pb-1 pb-md-5">
         <div class="container hero-grid position-relative z-1">
             <div class="item item-1">
-                <h1 class="display-3 m-0 lh-1">
-                    Работаем вместе для 
-                    <span class="text-primary">повышения</span> 
-                    качества образования
-                </h1>
+                <?=Html::tag('h1', Yii::t('app', 'working_together'), ['class' => 'display-3 m-0 lh-1']);?>
             </div>
             <div class="item item-2 text-primary d-flex align-items-starth-100 justify-content-end">
                 <?=Icons::logotype(150);?>
