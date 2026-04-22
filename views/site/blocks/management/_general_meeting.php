@@ -14,6 +14,7 @@
                                 <img 
                                     src="<?=$p["image"];?>" 
                                     alt="<?=$name;?>" 
+                                    loading="lazy"
                                     class="avatar" 
                                 />
                                 <div class="mt-2">
