@@ -48,7 +48,7 @@ class Language
             'div', 
             $image.$text, 
             [
-                'class' => 'btn', 
+                'class' => 'btn d-flex justify-content-center', 
                 ':class' => "[theme ? 'btn-light' : 'btn-dark']",
                 'type'=> 'button', 
                 'data-bs-toggle' => 'dropdown', 

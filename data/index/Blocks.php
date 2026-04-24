@@ -52,7 +52,13 @@ class Blocks
             ],  
             'content' => [
                 'dataProvider' => $dataProvider,
-                'news' => [],
+                'slide' => [
+                    ['image' => '/site/image/slide/14yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/12yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/13yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/15yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/11yrygvrtgrth.jpg']
+                ],
                 'about' => [
                     [
                         'icon' => Icons::Composition($iconSize),

@@ -5,7 +5,7 @@
     $admin = Html::a('Админ-Панель', '/admin/panel', ['class' => 'dropdown-item']);
     $logout = Html::a('Выйти', '/auth/logout', ['class' => 'dropdown-item', 'data-method' => 'post']);
 ?>
-<div class="d-flex gap-2">
+<div class="d-flex flex-md-row flex-column gap-2">
     <?=$this->render('_language');?> 
     <?php /*
     <button class="btn" :class="[theme ? 'btn-light' : 'btn-dark']" @click="toggleTheme">
@@ -41,7 +41,11 @@
 
     <?=Html::tag(
         'div',
-        Html::a(Yii::t('app', 'join_association'), '/auth/introduction', ['class' => 'btn btn-primary px-4 ctr']),
-        ['class' => 'd-flex']
+        Html::a(
+            Yii::t('app', 'join_association'), 
+            '/auth/introduction', 
+            ['class' => 'btn btn-primary px-4 ctr']
+        ),
+        ['class' => 'd-flex justify-content-center']
     );?>
 </div>

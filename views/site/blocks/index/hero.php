@@ -1,6 +1,25 @@
 <?php
     use yii\helpers\Html;
     use frontend\components\icons\Icons;
+    use frontend\components\widget\Swiper;
+    $slide = $content['content']['slide'];
+    $this->registerCss('
+        .swiper.slide {
+            padding-bottom: 30px;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            --swiper-navigation-color: #411fab;
+            color: var(--swiper-navigation-color, var(--swiper-theme-color));
+        }
+        .swiper-slide {
+            width: 100%;
+            user-select: none;
+            & .slider {
+                width:100%;
+                height: 460px;
+            }
+        }
+    ');
 ?>
 <section style="background: rgba(65, 31, 171, 13%)" class="vh-100">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-100 h-100 stripe-color position-absolute top-50 start-50 translate-middle" viewBox="0 0 1218 527" fill="none">
@@ -12,36 +31,52 @@
                 <?=Html::tag('h1', Yii::t('app', 'working_together'), ['class' => 'display-3 m-0 lh-1']);?>
             </div>
             <div class="item item-2 text-primary d-flex align-items-starth-100 justify-content-end">
-                <?=Icons::logotype(150);?>
+                <div class="d-none d-md-block">
+                    <?=Icons::logotype(150);?>
+                </div>
             </div>
-            <?php /*
-             
-                <div class="vstack gap-4 mt-md-3 mt-0">
-                    <ul class="text-secondary">
-                        <li>- вхождение в профессиональное сообщество</li>
-                        <li>- представление интересов в органах государственной власти</li>
-                        <li>- участие в разработке законодательных актов</li>
-                        <li>- вхождение в профильные советы при органах государственной власти (ГД РФ, Минобрнауки и др)</li>
-                        <li>- представление интересов сообщества на международной арене</li>
-                    </ul>
-                    <div class="d-grid">
-                        <a href="/auth/introduction" class="btn btn-lg btn-primary py-3 px-5 d-flex align-items-center justify-content-center gap-2">
-                            Присоединиться
-                            <?=Icons::arrowRight();?>
-                        </a>
-                    </div>  
-                </div>     
-                            
-            */ ?>
-            
             <div class="item item-4">
-                <div class="overflow-hidden rounded-5">
+                <?php Swiper::begin([
+                    'options' => [
+                        'id' => 'slide',
+                        'arrow' => true,
+                        'pagination' => true
+                    ],
+                    'clientOptions' => [
+                        'loop' => true,
+                        'slidesPerView' => 1,
+                        'spaceBetween' => 15,
+                        'navigation' => [
+                            'nextEl' => '.swiper-button-next',
+                            'prevEl' => '.swiper-button-prev',
+                        ],
+                        'pagination' => [
+                            'el' => '.swiper-pagination',
+                            'clickable' => true,
+                        ],
+                    ],
+                ]);?>
+                <?php foreach($slide as $item) { ?>
+                    <div class="swiper-slide">
+                        <div class="rounded-4 bg-primary overflow-hidden">
+                            <img 
+                                src="<?=$item['image'];?>" 
+                                alt="Image" 
+                                loading="lazy"
+                                class="w-100 object-fit-cover slider"
+                            />
+                            <div class="swiper-lazy-preloader"></div>
+                        </div>
+                    </div>
+                <?php } ?>
+                <?php Swiper::end();?>
+                <!-- <div class="overflow-hidden rounded-5">
                     <img 
                         src="/site/image/flat_style_illustrat.jpg" 
                         alt="Flat Style Illustration" 
                         class="w-100 rounded-5 object-fit-cover slider"
                     />                    
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

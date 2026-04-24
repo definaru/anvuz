@@ -3,10 +3,13 @@
     use frontend\components\widget\Swiper;
     $partner = $content['content']['partner']; 
     $this->registerCss('
+        .swiper.partners {
+            padding: 30px 0px;
+        }
         .swiper-slide {
             width: 100%;
             user-select: none;
-            & img {
+            & .title {
                 width:100%;
                 filter: invert(1);
                 margin-top: 30px;
@@ -37,6 +40,24 @@
                         'loop' => true,
                         'slidesPerView' => 4,
                         'spaceBetween' => 15,
+                        'breakpoints' => [
+                            300 => [
+                                'slidesPerView' => 1,
+                                'spaceBetween' => 5
+                            ],
+                            720 => [
+                                'slidesPerView' => 2,
+                                'spaceBetween' => 10
+                            ],
+                            960 => [
+                                'slidesPerView' => 3,
+                                'spaceBetween' => 15
+                            ],
+                            1140 => [
+                                'slidesPerView' => 4,
+                                'spaceBetween' => 15
+                            ],
+                        ],
                         'pagination' => [
                             'el' => '.swiper-pagination',
                             'clickable' => true,
@@ -51,6 +72,7 @@
                                     <div></div>
                                     <div class="text-center">
                                         <?=Html::img($item['image'], [
+                                            'class' => 'title',
                                             'alt' => $item['title']
                                         ]);?>
                                     </div>

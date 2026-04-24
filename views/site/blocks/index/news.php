@@ -1,7 +1,6 @@
 <?php
     use yii\bootstrap5\Html;
     use yii\widgets\ListView;
-    $news = $content['content']['news'];
 ?>
 <section class="py-5 bg-light news">
     <div class="container">

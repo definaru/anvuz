@@ -45,12 +45,9 @@ class Swiper extends Widget
         $init = '".'.$id.'"';
         $clientOptions = Json::encode($this->clientOptions);
         $js = <<<JS
-        const swiper = new Swiper($init, $clientOptions);
+        new Swiper($init, $clientOptions);
         JS;
         $this->view->registerCss('
-            .swiper {
-                padding: 30px 0px;
-            }
             .swiper-pagination-bullet-active {
                 --swiper-theme-color: #411fab;
             }
