@@ -1,15 +1,29 @@
 <?php
     use yii\helpers\Html;
     use frontend\components\icons\Icons;
-
+    $this->registerJsFile('https://unpkg.com/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js', ['position' => \yii\web\View::POS_END]);
+    $this->registerJs(<<<JS
+        const svgElement = document.getElementById('zoomable-svg');
+        const panZoom = svgPanZoom(svgElement, {
+            zoomEnabled: true,
+            controlIconsEnabled: true,
+            fit: true,
+            center: true,
+            minZoom: 0.5,
+            maxZoom: 4
+        });
+    JS);
     $this->registerCss('
-        .map-region path { stroke: #666; }
-        .map-region path { fill: #999; }
-        .map-region path:focus { outline: none;fill: #411fab;stroke: #411fab; }
-        .map-region g:focus { outline: none; fill: #411fab;stroke: #411fab; }
-        .map-region g:focus>path { outline: none; fill: #411fab; }
-        .map-region path:hover { fill: #411fab; cursor: pointer; }
-        .map-region g:hover path { fill: #411fab; cursor: pointer; }
+        #zoomable-svg {
+            width: 100%;
+            height: 600px;
+        }
+        .map-region g g:focus path {fill: #411fab;stroke: #411fab;}
+        .map-region g g:focus {fill: #411fab;stroke: #411fab;}
+        .map-region g g, .map-region g g path {outline: none;}
+        .map-region path { stroke: #666; fill: #999; }
+        .map-region g g:hover path { fill: #411fab; cursor: pointer; }
+        .map-region g path:hover { fill: #411fab; cursor: pointer; }
     ');
 ?>
 <div :class="[show ? 'col-md-8' : 'col-md-12']" class="col-12 text-start py-5">
@@ -18,7 +32,7 @@
             <?=Html::tag('h2', $title, ['class' => 'fw-bold m-0']);?>      
         </div>
         <div class="map-region w-100 position-relative" style="top: -30px">
-            <svg xml:space="preserve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 808.9 458.9" x="0px" y="0px"> 
+            <svg id="zoomable-svg" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 808.9 458.9" x="0px" y="0px"> 
                 <path d="M1.6,328.6H4l1.2,0.8l1.5,0.2v-0.9l1.3-0.2l0.8,1.3h3.3l0.1-1.1
                 l1.2,0.3v2.1l1.4,1.3l-0.8,2l1.6,1.6v2.9l0.4,1.1l-0.5,1.3l-0.8,1.1l1.2,1.2l0.5,1.2l2,0.6l2.1,0.3l2.5,4.2l-1.5,0.2l-1.3,1.3
                 l-2.6-0.9l-2-1.8l-0.4-1.1l-0.2-1l-1.3-0.9l-2.6,0.6l-1.7-0.9l-2.1-1.2l-3,0.5l-2.2-0.4l-1-1.7l-0.7-2.6l1.6-0.1l1.9-2.3l0.5-2.4
@@ -736,7 +750,6 @@
                 52.8,339 " data-bs-toggle="tooltip" data-bs-title="Луганская Народная Республика" @click="handlePathClick" region="LUG"></path> 
             </svg>
         </div>  
-
     </div>    
 </div>
 <template v-if="show">

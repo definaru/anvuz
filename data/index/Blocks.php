@@ -54,10 +54,25 @@ class Blocks
                 'dataProvider' => $dataProvider,
                 'slide' => [
                     ['image' => '/site/image/slide/14yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/30yrygvrtgrth.jpg'],
                     ['image' => '/site/image/slide/12yrygvrtgrth.jpg'],
                     ['image' => '/site/image/slide/13yrygvrtgrth.jpg'],
                     ['image' => '/site/image/slide/15yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/11yrygvrtgrth.jpg']
+                    ['image' => '/site/image/slide/11yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/16yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/17yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/18yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/19yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/20yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/21yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/22yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/23yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/24yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/25yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/26yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/27yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/28yrygvrtgrth.jpg'],
+                    ['image' => '/site/image/slide/29yrygvrtgrth.jpg'],
                 ],
                 'about' => [
                     [
