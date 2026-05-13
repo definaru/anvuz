@@ -38,7 +38,10 @@
                             'class' => 'row g-3',
                             'id' => 'list-wrapper',
                         ],
-                        'layout' => '{items} <div class="d-flex justify-content-center py-4">{pager}</div>',
+                        'layout' => '{summary}{items} <div class="d-flex justify-content-center py-4">{pager}</div>',
+                        'summaryOptions' => [
+                            'class' => 'text-center text-muted mb-4',
+                        ],
                         'pager' => [
                             'maxButtonCount' => 3, 
                             'options' => ['id' => 'mypager', 'class' => 'pagination'],
