@@ -2,6 +2,15 @@
     use yii\bootstrap5\Html;
     use yii\base\ViewNotFoundException;
     use yii\helpers\Markdown;
+    $this->registerCss('
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin-top: 1.5em;
+        }
+        em {
+            color: #411fab;
+        }
+    ');
 ?>
 <div class="mb-5">
     <div class="col-12 mb-5">
