@@ -1,6 +1,6 @@
 <?php
     use yii\bootstrap5\Html;
-    //use frontend\components\icons\Icons;
+    use frontend\components\icons\Icons;
     //$panel = Html::a('Личный кабинет', '/panel/profile', ['class' => 'dropdown-item']);
     $admin = Html::a('Админ-Панель', '/admin/panel', ['class' => 'dropdown-item']);
     $logout = Html::a('Выйти', '/auth/logout', ['class' => 'dropdown-item', 'data-method' => 'post']);
@@ -20,11 +20,15 @@
     </button>      
 
       
+
+  
+    
+    */ ?>
     <?php if (Yii::$app->user->isGuest) { ?>
 
     <?php } else { ?>     
         <div class="dropdown">
-            <button class="btn btn-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <?=Icons::Person();?>
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -35,10 +39,6 @@
             </ul>
         </div>
     <?php } ?>  
-  
-    
-    */ ?>
-
     <?=Html::tag(
         'div',
         Html::a(

@@ -1,10 +1,11 @@
 <?php
+    use yii\web\View;
     use yii\helpers\Html;
     $this->title = 'Заявка на вступление в Ассоциацию';
 
-    $this->registerJsFile('/app/js/vue.js', ['position' => yii\web\View::POS_END]);
-    $this->registerJsFile('/auth/js/introduction.js', ['position' => yii\web\View::POS_END]);
-    $this->registerJsFile('/app/js/phonemask.js', ['position' => yii\web\View::POS_END]);
+    $this->registerJsFile('/app/js/vue.js', ['position' => View::POS_END]);
+    $this->registerJsFile('/auth/js/introduction.js', ['position' => View::POS_END]);
+    $this->registerJsFile('/app/js/phonemask.js', ['position' => View::POS_END]);
     $this->registerJs(<<<JS
         const phoneInput = document.querySelector('input[name="phone"]');
         if (phoneInput) {
@@ -60,10 +61,10 @@
             ':class' => "{ 'was-validated': wasValidated }"
         ]);?>
             <div>
-                <?= Html::label('Название ВУЗа', 'username', ['class' => $label]) ?>
+                <?php //= Html::label('Название ВУЗа', 'username', ['class' => $label]) ?>
                 <?= Html::input('text', 'title', '', [
                     'class' => $input, 
-                    //'placeholder' => 'Полное название ВУЗа', 
+                    'placeholder' => 'Название ВУЗа', 
                     'required' => true,
                     'v-model' => 'form.title'
                 ]);?>
@@ -71,20 +72,20 @@
                 <?php //= Html::tag('span', 'Или указать аббревиатуру ВУЗа', ['class' => 'form-text text-body-tertiary']);?>
             </div>
             <div>
-                <?= Html::label('Контактное лицо (ФИО)', 'person', ['class' => $label]) ?>
+                <?php // = Html::label('Контактное лицо (ФИО)', 'person', ['class' => $label]) ?>
                 <?= Html::input('text', 'person', '', [
                     'class' => $input, 
-                    //'placeholder' => 'Ваше полное имя', 
+                    'placeholder' => 'Контактное лицо (ФИО)', 
                     'required' => true,
                     'v-model' => 'form.person'
                 ]);?>
                 <?= Html::tag('span', 'Напишите пожалуйста ваше полное имя', ['class' => 'invalid-feedback']);?>
             </div>
             <div>
-                <?= Html::label('E-mail', 'email', ['class' => $label]) ?>
+                <?php // = Html::label('E-mail', 'email', ['class' => $label]) ?>
                 <?= Html::input('email', 'email', '', [
                     'class' => $input, 
-                    //'placeholder' => 'Ваш рабочий электронный ящик', 
+                    'placeholder' => 'E-mail', 
                     'required' => true,
                     'v-model' => 'form.email'
                 ]);?>
@@ -92,10 +93,10 @@
                 <?= Html::tag('span', 'На этот e-mail придут важные документы', ['class' => 'form-text']);?>
             </div>
             <div>
-                <?= Html::label('Телефон', 'phone', ['class' => $label]) ?>
+                <?php //= Html::label('Телефон', 'phone', ['class' => $label]) ?>
                 <?= Html::input('tel', 'phone', '', [
                     'class' => $input, 
-                    //'placeholder' => '+74950001020',
+                    'placeholder' => 'Телефон',
                     'v-model' => 'form.phone'
                 ]);?>
                 <?= Html::tag('span', 'Номера без скобок пробелов и дефисов', ['class' => 'form-text']) ?>

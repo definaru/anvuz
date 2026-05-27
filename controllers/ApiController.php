@@ -40,7 +40,7 @@ class ApiController extends Controller
     }
 
 
-    public function Responce($res)
+    public function Responce(array $res)
     {
         $response = Yii::$app->response;
         $response->format = \yii\web\Response::FORMAT_JSON;
@@ -86,6 +86,7 @@ class ApiController extends Controller
     {
         $data = Yii::$app->request->getBodyParams();
         $res = [
+            'code' => 200,
             'success' => true,
             'data' => $data
         ];
@@ -103,7 +104,7 @@ class ApiController extends Controller
         return self::Responce($res);
     }
 
-    public function actionUniversities($region)
+    public function actionUniversities(int $region)
     {
         $res = University::find()
             ->with('profile', 'contact')

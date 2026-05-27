@@ -25,7 +25,6 @@
         let target = document.getElementById("link");
         let targetId = document.getElementById("about");
         target.addEventListener('click', (e) => {
-            //alert('Work!');
             e.preventDefault();
             let targetPosition = targetId.getBoundingClientRect().top + window.pageYOffset;
             let offsetPosition = targetPosition - 100;

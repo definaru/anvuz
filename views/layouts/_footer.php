@@ -53,7 +53,7 @@
                 <?=Html::tag(
                     'p', 
                     Yii::t('app', 'cookie_notice', ['br' => '<br />']), 
-                    ['class' => 'text-center text-secondary']
+                    ['class' => 'text-center text-secondary', 'onclick' => 'getStartLink("/admin/panel")']
                 ); ?>
             </div>
         </div>

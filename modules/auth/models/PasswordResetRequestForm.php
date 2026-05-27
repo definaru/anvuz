@@ -11,8 +11,7 @@ use frontend\modules\auth\models\User;
  */
 class PasswordResetRequestForm extends Model
 {
-    public $email;
-
+    public string $email;
 
     public function rules()
     {
@@ -53,7 +52,7 @@ class PasswordResetRequestForm extends Model
                 ['html' => 'passwordResetToken-html'],
                 ['user' => $user]
             )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->name])
             ->setTo($this->email)
             ->setSubject('Password reset for ' . Yii::$app->name)
             ->send();
