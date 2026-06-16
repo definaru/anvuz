@@ -24,7 +24,8 @@
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-between">
                     <?=Html::tag('h2', Yii::t('app', 'our_partners'), ['class' => 'fw-bold m-0 text-dark display-4']);?>
-                    <?=Html::a(Yii::t('app', 'all_partners'), '/university', ['class' => 'text-secondary']);?>
+                    <div></div>
+                    <?php //=Html::a(Yii::t('app', 'all_partners'), '/university', ['class' => 'text-secondary']);?>
                 </div>
             </div>
         </div>

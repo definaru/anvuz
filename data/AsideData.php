@@ -53,6 +53,13 @@ class AsideData
                 ]
             ],
             [
+                'icon' => 'mapPin',
+                'title' => 'Геолокация',
+                'link' => '/admin/location',
+                'value' => '',
+                'list' => false
+            ],
+            [
                 'icon' => '',
                 'title' => 'Ресурсы',
                 'link' => '',

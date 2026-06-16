@@ -2,7 +2,7 @@
 
 namespace frontend\models;
 
-//use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "profiles".
@@ -15,7 +15,7 @@ namespace frontend\models;
  * @property string|null $position
  * @property string|null $href
  */
-class Profiles extends \yii\db\ActiveRecord
+class Profiles extends ActiveRecord
 {
     /**
      * {@inheritdoc}

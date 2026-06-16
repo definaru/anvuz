@@ -44,6 +44,11 @@ class AdminController extends Controller
         return $this->render('panel');
     }
 
+    public function actionLocation()
+    {
+        return $this->render('location');
+    }
+
     public function actionUsers()
     {
         $searchModel = new ProfileSearch();

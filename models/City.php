@@ -2,7 +2,7 @@
 
 namespace frontend\models;
 
-use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "city".
@@ -11,7 +11,7 @@ use Yii;
  * @property string $namecity
  * @property string $region
  */
-class City extends \yii\db\ActiveRecord
+class City extends ActiveRecord
 {
 
 

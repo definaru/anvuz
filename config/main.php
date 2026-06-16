@@ -59,7 +59,7 @@ return [
                 '/about/<href:[\w_\/-]+>' => 'site/about',
                 '/news/<href:[\w_\/-]+>' => 'site/news',
                 '/document/<href:[\w_\/-]+>' => 'site/document',
-                '/admin/<action:(panel|profile|setting|users|events|universities|news|help)>' => 'admin/admin/<action>',
+                '/admin/<action:(panel|profile|setting|users|events|universities|news|help|location)>' => 'admin/admin/<action>',
                 '/admin/news/<action:(list|archive|create)>' => 'admin/news/<action>', // |update|delete
                 '/sitemap' => 'sitemap/sitemap/page',
                 '/sitemap.xml' => 'sitemap/sitemap/index',

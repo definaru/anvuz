@@ -104,7 +104,7 @@ class ApiController extends Controller
         return self::Responce($res);
     }
 
-    public function actionUniversities(int $region)
+    public function actionUniversities(string $region)
     {
         $res = University::find()
             ->with('profile', 'contact')

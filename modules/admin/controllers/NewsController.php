@@ -3,9 +3,9 @@ namespace frontend\modules\admin\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\NotFoundHttpException;
 use frontend\models\NewsSearch;
 use frontend\models\News;
 
@@ -50,7 +50,7 @@ class NewsController extends Controller
     }
 
 
-    public function actionView($id)
+    public function actionView(int $id)
     {
         return $this->render('view', ['model' => $this->findModel($id)]);
     }
@@ -66,6 +66,7 @@ class NewsController extends Controller
     {
         $model = new News();
         $model->create_date = time();
+        $model->id_user = Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -73,7 +74,7 @@ class NewsController extends Controller
     }
 
 
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -83,14 +84,14 @@ class NewsController extends Controller
     }
 
 
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }
 
 
-    protected function findModel($id)
+    protected function findModel(int $id)
     {
         if (($model = News::findOne($id)) !== null) {
             return $model;

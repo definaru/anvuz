@@ -28,9 +28,9 @@ class Profile
     {
         $init = Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->profile;
         //$init->avatar : self::initials();
-        $image = 'https://htmlstream.com/preview/front-dashboard-v2.1.1/assets/img/160x160/img6.jpg';
+        $image = $init->image;
         $avatar = Html::img($image, [
-            'style' => 'width:40px',
+            'style' => 'width:40px;height:40px',
             'class' => 'rounded-circle',
             'alt' => self::initials(),
         ]);

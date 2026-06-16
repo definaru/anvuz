@@ -222,18 +222,6 @@ class Icons
     }
 
 
-    public static function UsersRound($size = 24, $color = 'currentColor', $width = 2)
-    {
-        return <<<SVG
-        <svg xmlns="http://www.w3.org/2000/svg" width="$size" height="$size" viewBox="0 0 24 24" fill="none" stroke="$color" stroke-width="$width" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 21a8 8 0 0 0-16 0"/>
-            <circle cx="10" cy="8" r="5"/>
-            <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
-        </svg>
-        SVG;
-    }
-
-
     public static function CalendarDays($size = 24, $color = 'currentColor', $width = 2)
     {
         return <<<SVG
@@ -390,6 +378,54 @@ class Icons
             <path d="M8 14v7"/>
         </svg>
         SVG;
+    }
+
+    public static function landmark($size = 24, $color = 'currentColor', $width = 2)
+    {
+        return <<<SVG
+        <svg xmlns="http://www.w3.org/2000/svg" width="$size" height="$size" viewBox="0 0 24 24" fill="none" stroke="$color" stroke-width="$width" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 18v-7"/>
+            <path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/>
+            <path d="M14 18v-7"/>
+            <path d="M18 18v-7"/>
+            <path d="M3 22h18"/>
+            <path d="M6 18v-7"/>
+        </svg>
+        SVG;
+    }
+
+    public static function usersRound($size = 24, $color = 'currentColor', $width = 2)
+    {
+        return <<<SVG
+        <svg xmlns="http://www.w3.org/2000/svg" width="$size" height="$size" viewBox="0 0 24 24" fill="none" stroke="$color" stroke-width="$width" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 21a8 8 0 0 0-16 0"/>
+            <circle cx="10" cy="8" r="5"/>
+            <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
+        </svg>
+        SVG;   
+    }
+
+    public static function fileText($size = 24, $color = 'currentColor', $width = 2)
+    {
+        return <<<SVG
+        <svg xmlns="http://www.w3.org/2000/svg" width="$size" height="$size" viewBox="0 0 24 24" fill="none" stroke="$color" stroke-width="$width" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/>
+            <path d="M14 2v5a1 1 0 0 0 1 1h5"/>
+            <path d="M10 9H8"/>
+            <path d="M16 13H8"/>
+            <path d="M16 17H8"/>
+        </svg>
+        SVG;   
+    }
+
+    public static function inbox($size = 24, $color = 'currentColor', $width = 2)
+    {
+        return <<<SVG
+        <svg xmlns="http://www.w3.org/2000/svg" width="$size" height="$size" viewBox="0 0 24 24" fill="none" stroke="$color" stroke-width="$width" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/>
+            <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>
+        </svg>
+        SVG;   
     }
 
 }

@@ -11,7 +11,7 @@ use frontend\modules\auth\models\User;
  */
 class PasswordResetRequestForm extends Model
 {
-    public string $email;
+    public $email;
 
     public function rules()
     {

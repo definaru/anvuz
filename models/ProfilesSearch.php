@@ -60,16 +60,17 @@ class ProfileSearch extends Profiles
 
         $query->andFilterWhere([
             'id' => $this->id,
+            'create_date' => $this->create_date,
+            'section' => $this->section,
         ]);
 
-        $query->andFilterWhere(['like', 'lastname', $this->lastname])
+        $query->andFilterWhere(['like', 'image', $this->image])
             ->andFilterWhere(['like', 'firstname', $this->firstname])
+            ->andFilterWhere(['like', 'lastname', $this->lastname])
             ->andFilterWhere(['like', 'middlename', $this->middlename])
-            ->andFilterWhere(['like', 'image', $this->image])
-            ->andFilterWhere(['like', 'position', $this->position])
             ->andFilterWhere(['like', 'uuid', $this->uuid])
-            ->andFilterWhere(['like', 'section', $this->section])
-            ->andFilterWhere(['like', 'create_date', $this->create_date]);
+            ->andFilterWhere(['like', 'position', $this->position])
+            ->andFilterWhere(['like', 'city', $this->city]);
 
         return $dataProvider;
     }
