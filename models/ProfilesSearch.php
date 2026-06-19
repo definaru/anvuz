@@ -5,7 +5,7 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 
-class ProfileSearch extends Profiles
+class ProfilesSearch extends Profiles
 {
     /**
      * @inheritdoc

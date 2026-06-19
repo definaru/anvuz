@@ -1,16 +1,16 @@
 <?php
-
 namespace frontend\modules\admin\controllers;
 
+use Yii;
 use frontend\models\Profiles;
 use frontend\models\ProfilesSearch;
-use yii\web\Controller;
+use frontend\modules\auth\models\User;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
+use yii\web\Controller;
 use yii\filters\VerbFilter;
 
-/**
- * ProfilesController implements the CRUD actions for Profiles model.
- */
+
 class ProfilesController extends Controller
 {
     /**
@@ -22,7 +22,7 @@ class ProfilesController extends Controller
             parent::behaviors(),
             [
                 'verbs' => [
-                    'class' => VerbFilter::className(),
+                    'class' => VerbFilter::class,
                     'actions' => [
                         'delete' => ['POST'],
                     ],
@@ -31,16 +31,18 @@ class ProfilesController extends Controller
         );
     }
 
-    /**
-     * Lists all Profiles models.
-     *
-     * @return string
-     */
+
+    public function actionAccount()
+    {
+        $model = User::find()->where(['id' => Yii::$app->user->identity->id])->one();
+        return $this->render('account', ['model' => $model]);
+    }
+
+
     public function actionIndex()
     {
         $searchModel = new ProfilesSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -55,31 +57,25 @@ class ProfilesController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
-    /**
-     * Creates a new Profiles model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return string|\yii\web\Response
-     */
+
     public function actionCreate()
     {
         $model = new Profiles();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+        if(Yii::$app->request->get('username')) {
+            $model->uuid = Yii::$app->request->get('username');
+        } else {
+            $model->uuid = Yii::$app->security->generateRandomString(30);
+        }
+        if ($model->load($this->request->post())) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if($model->upload($model->uuid) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
-        } else {
-            $model->loadDefaultValues();
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->render('create', ['model' => $model]);
     }
 
     /**
@@ -92,14 +88,10 @@ class ProfilesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->render('update', ['model' => $model]);
     }
 
     /**
@@ -112,7 +104,6 @@ class ProfilesController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
@@ -128,7 +119,6 @@ class ProfilesController extends Controller
         if (($model = Profiles::findOne(['id' => $id])) !== null) {
             return $model;
         }
-
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

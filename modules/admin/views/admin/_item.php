@@ -1,9 +1,10 @@
 <?php
     use yii\helpers\Html;
     use frontend\components\blocks\ui\Profile;
-    $user = Yii::$app->user->isGuest ? '' : Yii::$app->user->identity;
-    $name = $user === '' ? 'Not User' : $user->profile->lastname.' '.$user->profile->firstname;
-    $email = $user === '' ? 'no data' : $user->email;
+    $profile = Yii::$app->user->identity->profile;
+    $user = $profile ?? null;
+    $name = $user === null ? 'Not User' : $profile->lastname.' '.$profile->firstname;
+    $email = $user === null ? 'no data' : Yii::$app->user->identity->email;
 ?>
 <li>
     <div class="dropdown-item">

@@ -13,8 +13,6 @@ use yii\db\ActiveRecord;
  */
 class City extends ActiveRecord
 {
-
-
     /**
      * {@inheritdoc}
      */

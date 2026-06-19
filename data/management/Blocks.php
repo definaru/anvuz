@@ -12,7 +12,7 @@ class Blocks
         return Profiles::find()
             ->with('location', 'section', 'contacts')
             ->orderBy(['section' => SORT_ASC, 'lastname' => SORT_ASC])
-            ->where(['is not', 'section', null])
+            ->where(['is not', 'section', '-'])
             ->asArray()
             ->all();
     }

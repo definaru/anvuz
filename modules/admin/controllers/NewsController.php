@@ -65,10 +65,15 @@ class NewsController extends Controller
     public function actionCreate()
     {
         $model = new News();
-        $model->create_date = time();
+        $model->create_date = date('Y-m-d H:i:s');
         $model->id_user = Yii::$app->user->identity->id;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model->id_meta = 1;
+        $model->body = uniqid();
+        if ($model->load(Yii::$app->request->post())) {
+            sleep(2);
+            if($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
         return $this->render('create', ['model' => $model]);
     }
@@ -87,7 +92,7 @@ class NewsController extends Controller
     public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
-        return $this->redirect(['index']);
+        return $this->redirect('/admin/news/list');
     }
 
 

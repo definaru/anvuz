@@ -1,7 +1,7 @@
 <?php
-
 namespace frontend\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 
 /**
@@ -32,9 +32,11 @@ class Profiles extends ActiveRecord
     {
         return [
             [['position'], 'default', 'value' => '-'],
-            [['lastname', 'firstname', 'section'], 'required'],
-            [['lastname', 'firstname', 'middlename', 'image', 'position', 'uuid', 'city'], 'string', 'max' => 255],
+            [['section'], 'default', 'value' => '-'],
+            [['lastname', 'firstname'], 'required'],
+            [['lastname', 'firstname', 'middlename', 'position', 'uuid', 'city'], 'string', 'max' => 255],
             [['uuid'], 'unique'],
+            [['image'], 'file', 'extensions' => 'png, jpg, jpeg', 'skipOnEmpty' => false],
         ];
     }
 
@@ -55,6 +57,20 @@ class Profiles extends ActiveRecord
             'section' => 'Иерархия',
             'create_date' => 'Дата создания',
         ];
+    }
+
+
+    public function upload(string $name)
+    {
+        $fileName = $name.'.'.$this->image->extension;
+        $uploadPath = Yii::getAlias('@frontendWeb') . '/data/users/avatar/';
+        $filePath = $uploadPath . $fileName;
+        if (!$this->image->saveAs($filePath)) {
+            $this->addError('image', 'Ошибка при сохранении файла');
+            return false;
+        }
+        $this->image = $fileName;
+        return true;
     }
 
 

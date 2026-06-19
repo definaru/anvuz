@@ -11,7 +11,8 @@ class Profile
 
     public static function initials()
     {
-        $init = Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->profile;
+        $profile = Yii::$app->user->identity->profile ?? null;
+        $init = $profile === null ? '' : Yii::$app->user->identity->profile;
         if($init === '') return;
         return mb_substr($init->lastname, 0, 1) . mb_substr($init->firstname, 0, 1);
     }
@@ -26,14 +27,8 @@ class Profile
 
     public static function avatar()
     {
-        $init = Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->profile;
-        //$init->avatar : self::initials();
-        $image = $init->image;
-        $avatar = Html::img($image, [
-            'style' => 'width:40px;height:40px',
-            'class' => 'rounded-circle',
-            'alt' => self::initials(),
-        ]);
+        $profile = Yii::$app->user->identity->profile;
+        $init = $profile ?? null;
         $blank = Html::tag(
             'div', 
             self::initials(), 
@@ -41,8 +36,18 @@ class Profile
                 'style' => 'width:40px;height:40px', 
                 'class' => 'bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center'
             ]
-        );
-        return isset($init->image) ? $avatar : $blank;
+        );        
+        if($init !== null) {
+            $image = $profile->image === null ? 0 : 1;
+            $avatar = Html::img($profile->image, [
+                'style' => 'width:40px;height:40px',
+                'class' => 'rounded-circle',
+                'alt' => self::initials(),
+            ]);
+
+            return $image === 1 ? $avatar : $blank;            
+        }
+        return $blank;
     }
 
 
