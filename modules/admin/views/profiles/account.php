@@ -2,14 +2,16 @@
     use yii\helpers\Html;
     $this->title = 'Профиль';
     $this->params['breadcrumbs'][] = $this->title;
+    /** @var frontend\models\Profiles $model */
+
     $user = Yii::$app->user->identity;
     $profile = $user->profile ?? null;
 ?>
 <div class="row">
-    <?= Html::tag('h2', 'Профиль пользователя');?>
+    <?= Html::tag('h2', $this->title);?>
     <?php if ($profile !== null) { ?>
     <div class="col-12">
-        <?=$profile->firstname;?>
+        <?= $this->render('_profile');?>
     </div>
     <?php } else { ?>
     <div class="col-12 col-md-6">
@@ -33,5 +35,3 @@
     </div>
     <?php } ?>
 </div>
-
-<pre><?php // var_dump($model);?></pre>

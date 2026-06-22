@@ -30,5 +30,8 @@ class AdminAsset extends AssetBundle
             //$this->css[] = '';
             $this->js[] = 'ui-admin/js/create_news.js';
         }
+        if (\Yii::$app->controller->action->id === 'update') {
+            $this->js[] = 'ui-admin/js/update_news.js';
+        }
     }
 }

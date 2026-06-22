@@ -4,7 +4,10 @@
     use yii\helpers\ArrayHelper;
     use frontend\models\City;
     use frontend\models\Hierarchy;
-    
+
+    /** @var frontend\models\Profiles $model */
+    $label = $model->isNewRecord || empty($model->image) ? 'Фотография' : false;
+    $type = $model->isNewRecord || empty($model->image) ? 'file' : 'hidden';
     $colorButton = $model->isNewRecord ? 'btn btn-success px-5' : 'btn btn-primary px-5';
     $textButton = $model->isNewRecord ? 'Создать' : 'Обновить';
     $list = ArrayHelper::map(City::find()->all(), 'id', 'namecity');
@@ -23,7 +26,11 @@
                 'class' => 'vstack gap-3'
             ]
         ]); ?>
-            <?= $form->field($model, 'image')->fileInput(['class' => 'form-control', 'accept' => 'image/*']);?>
+            <?= $form->field($model, 'image')->textInput([
+                'class' => 'form-control', 
+                'accept' => 'image/*', 
+                'type' => $type
+            ])->label($label);?>
 
             <div class="row">
                 <div class="col-12 col-md-4">
@@ -67,4 +74,4 @@
     </div>
 </div>
 
-<pre><?php //var_dump($list);?></pre>
+<pre><?php var_dump($model->getErrors());?></pre>

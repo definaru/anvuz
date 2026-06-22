@@ -1,4 +1,5 @@
 <?php
+    /** @var frontend\models\News $model */
     $this->title = 'Создание новости';
     $this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => '/admin/news/list'];
     $this->params['breadcrumbs'][] = $this->title;

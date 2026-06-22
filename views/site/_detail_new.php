@@ -2,6 +2,9 @@
     use yii\bootstrap5\Html;
     use yii\base\ViewNotFoundException;
     use yii\helpers\Markdown;
+
+    /** @var frontend\models\News $new */
+
     $this->registerCss('
         h1, h2, h3, h4, h5, h6 {
             font-weight: 600;
@@ -9,6 +12,10 @@
         }
         em {
             color: #411fab;
+        }
+        .news img {
+            border-radius: 4px;
+            border: 1px solid #ddd;
         }
     ');
 ?>

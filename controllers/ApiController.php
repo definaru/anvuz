@@ -68,11 +68,12 @@ class ApiController extends Controller
 
     public function actionImage()
     {
+        $post = Yii::$app->request->post();
         $file = UploadedFile::getInstanceByName('file');
         if ($file === null) {
             return self::Responce(['error' => 'Файл не получен']);
         }
-        $folder = '/data/news/photo/' . uniqid();
+        $folder = '/data/news/photo/' . $post['folder'];
         $absoluteFolder = Yii::getAlias('@frontendWeb') . $folder;
         if (!is_dir($absoluteFolder)) {
             FileHelper::createDirectory($absoluteFolder);

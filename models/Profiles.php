@@ -3,6 +3,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "profiles".
@@ -36,7 +37,7 @@ class Profiles extends ActiveRecord
             [['lastname', 'firstname'], 'required'],
             [['lastname', 'firstname', 'middlename', 'position', 'uuid', 'city'], 'string', 'max' => 255],
             [['uuid'], 'unique'],
-            [['image'], 'file', 'extensions' => 'png, jpg, jpeg', 'skipOnEmpty' => false],
+            [['image'], 'file', 'extensions' => 'png, jpg, jpeg', 'skipOnEmpty' => true],
         ];
     }
 
@@ -62,15 +63,23 @@ class Profiles extends ActiveRecord
 
     public function upload(string $name)
     {
-        $fileName = $name.'.'.$this->image->extension;
-        $uploadPath = Yii::getAlias('@frontendWeb') . '/data/users/avatar/';
-        $filePath = $uploadPath . $fileName;
-        if (!$this->image->saveAs($filePath)) {
-            $this->addError('image', 'Ошибка при сохранении файла');
-            return false;
+        $dir = '/data/users/avatar/';
+        $file = UploadedFile::getInstance($this, 'image');
+        if ($file && $file->tempName) {
+            $this->image = $file;
+            $fileName = $name . '.' . $this->image->extension;
+            $this->image->saveAs(Yii::getAlias('@frontendWeb').$dir.$fileName);
+            $this->image = $dir.$fileName;
         }
-        $this->image = $fileName;
-        return true;
+    }
+
+    public function profile()
+    {
+        if(Yii::$app->request->get('username')) {
+            $this->uuid = Yii::$app->request->get('username');
+        } else {
+            $this->uuid = Yii::$app->security->generateRandomString(30);
+        }
     }
 
 
@@ -80,7 +89,7 @@ class Profiles extends ActiveRecord
     }
 
 
-    public function getSection()
+    public function getSections()
     {
         return $this->hasOne(Hierarchy::class, ['sortable' => 'section'])->select('name, sortable');
     }

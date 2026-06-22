@@ -4,6 +4,7 @@ namespace frontend\components\widget;
 use Yii;
 use yii\web\View;
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\widgets\InputWidget;
 use frontend\assets\EditorAsset;
 
@@ -25,11 +26,14 @@ class ToastEditor extends InputWidget
     }
 
 
-    public function registerClientScript($id)
+    public function registerClientScript(string $id)
     {
         EditorAsset::register($this->view);
         $csrf = Yii::$app->request->csrfToken;
         $height = $this->options['height'] ? $this->options['height'] : 500;
+        $content = $this->options['content'] ? $this->options['content'] : '';
+        $folder = $this->options['folder'] ?? uniqid();
+        $jsContent = Json::encode($content, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         $js = <<<JS
         
         const editor = new toastui.Editor({
@@ -37,14 +41,14 @@ class ToastEditor extends InputWidget
             height: '$height'+'px',
             initialEditType: 'wysiwyg',
             previewStyle: 'vertical',
-            initialValue: '',
             language: 'ru',
-            // initialValue: $('#$id').val(),
+            initialValue: $jsContent,
             hooks: {
                 addImageBlobHook: async (blob, callback) => {
                     const formData = new FormData();
                     formData.append('file', blob);
                     formData.append('_csrf', '$csrf');
+                    formData.append('folder', '$folder');
                     try {
                         const response = await fetch('/api/v1/image', {
                             method: 'POST',
@@ -60,10 +64,6 @@ class ToastEditor extends InputWidget
             }
         });
         editor.getMarkdown();
-
-        // $('form').on('submit', function() {
-        //     $('#$id').val(editor.getMarkdown());
-        // });
         JS;
         $this->view->registerJs($js, View::POS_END);
     }

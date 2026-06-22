@@ -1,15 +1,12 @@
 <?php
+    use yii\helpers\Html;
+    use yii\widgets\DetailView;
 
-use yii\helpers\Html;
-use yii\widgets\DetailView;
+    /** @var frontend\models\Profiles $model */
 
-/** @var yii\web\View $this */
-/** @var frontend\models\Profiles $model */
-
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+    $this->title = $model->firstname;
+    $this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];
+    $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profiles-view">
 
@@ -20,26 +17,32 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить данный профиль ?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
+    <?=DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
             'image',
             'firstname',
             'lastname',
             'middlename',
-            'uuid',
+            //'uuid',
             'position',
-            'city:ntext',
-            'create_date',
-            'section',
+            [
+                'attribute' => 'city',
+                'value' => $model->location->namecity, 
+            ],
+            [
+                'attribute' => 'section',
+                'value' => $model->sections->name, 
+            ],
+            'create_date'
         ],
-    ]) ?>
-
+    ]);?>
 </div>
+<pre><?php // var_dump($model->sections);?></pre>

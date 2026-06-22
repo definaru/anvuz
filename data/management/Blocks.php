@@ -10,7 +10,7 @@ class Blocks
     public static function management()
     {
         return Profiles::find()
-            ->with('location', 'section', 'contacts')
+            ->with('location', 'sections', 'contacts')
             ->orderBy(['section' => SORT_ASC, 'lastname' => SORT_ASC])
             ->where(['is not', 'section', '-'])
             ->asArray()
@@ -22,10 +22,10 @@ class Blocks
         $profiles = self::management();
         $grouped = [];
         foreach ($profiles as $p) {
-            $key = $p['section']['sortable'];
+            $key = $p['sections']['sortable'];
             if (!isset($grouped[$key])) {
                 $grouped[$key] = [
-                    'section' => $p['section']['name'],
+                    'section' => $p['sections']['name'],
                     'profiles' => []
                 ];
             }

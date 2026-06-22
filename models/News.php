@@ -1,6 +1,7 @@
 <?php
 namespace frontend\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 use frontend\modules\auth\models\User;
 
@@ -37,6 +38,17 @@ class News extends ActiveRecord
             'create_date' => 'Дата создания',
             'update_date' => 'Дата обновления',
         ];
+    }
+
+
+    public static function getContent(News $model)
+    {
+        if($model->isNewRecord) {
+            return '';
+        } else {
+            $filePath = Yii::getAlias('@frontend/web/data/news/'.$model->id.'.md');
+            return file_get_contents($filePath);            
+        }
     }
 
     // Связи

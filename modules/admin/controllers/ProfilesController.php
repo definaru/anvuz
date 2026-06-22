@@ -6,7 +6,6 @@ use frontend\models\Profiles;
 use frontend\models\ProfilesSearch;
 use frontend\modules\auth\models\User;
 use yii\web\NotFoundHttpException;
-use yii\web\UploadedFile;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 
@@ -50,10 +49,7 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Displays a single Profiles model.
-     * @param int $id ID
-     * @return string
-     * @throws NotFoundHttpException if the model cannot be found
+     * @param int $id
      */
     public function actionView($id)
     {
@@ -64,14 +60,11 @@ class ProfilesController extends Controller
     public function actionCreate()
     {
         $model = new Profiles();
-        if(Yii::$app->request->get('username')) {
-            $model->uuid = Yii::$app->request->get('username');
-        } else {
-            $model->uuid = Yii::$app->security->generateRandomString(30);
-        }
+        $model->create_date = time();
+        $model->profile();
         if ($model->load($this->request->post())) {
-            $model->image = UploadedFile::getInstance($model, 'image');
-            if($model->upload($model->uuid) && $model->save()) {
+            $model->upload($model->uuid);
+            if($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
@@ -79,27 +72,22 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Updates an existing Profiles model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
-     * @return string|\yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @param int $id
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        if ($model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load($this->request->post())) {
+            $model->upload($model->uuid);
+            if($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
         return $this->render('update', ['model' => $model]);
     }
 
     /**
-     * Deletes an existing Profiles model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @param int $id
      */
     public function actionDelete($id)
     {

@@ -1,11 +1,22 @@
 <?php
     use yii\helpers\Html;
     use yii\widgets\ActiveForm;
-    use frontend\models\News;
     use frontend\components\widget\ToastEditor;
+    use frontend\models\News;
+
+    /** @var frontend\models\News $model */
+    $title = [
+        'class' => 'form-control fw-bold', 
+        'placeholder' => 'Заголовок статьи'
+    ];
+    $titleParams = $model->isNewRecord ? ['@input' => 'generateSlug', 'v-model' => 'title'] : [];
+
+    $href = ['class' => 'form-control', 'placeholder' => 'URL адрес новости...'];
+    $hrefParams = $model->isNewRecord ? ['v-model' => 'href'] : [];
+
     $textButton = $model->isNewRecord ? 'Создать' : 'Обновить';
     $colorButton = $model->isNewRecord ? 'btn btn-primary px-4' : 'btn btn-success px-4';
-    $latestRecord = News::find()->orderBy(['id' => SORT_DESC])->one();
+
     $csrf = Yii::$app->request->csrfToken;
     $id = $model->body;
 
@@ -14,6 +25,13 @@
         '2' => 'События',
         '3' => 'Университеты'
     ];
+    $file = News::getContent($model); 
+    $this->registerCss('
+        .help-block {
+            color: red;
+            font-size: 16px;
+        }
+    ');
 ?>
 <div class="card-body">
     <?php $form = ActiveForm::begin([
@@ -21,13 +39,15 @@
         'options' => ['class' => 'vstack gap-3'],
     ]); ?>
 
-        <?= $form->field($model, 'title')->textInput([
-            'class' => 'form-control fw-bold', 
-            'placeholder' => 'Заголовок статьи',
-            '@input' => 'generateSlug',
-            'v-model' => 'title'
-        ]);?>
-
+        <?= $form->field($model, 'title')->textInput(array_merge($title, $titleParams));?>
+        <?php if(isset($model->image)) { ?>
+            <div class="position-relative">
+                <div class="position-absolute top-0 end-0">
+                    <button type="button" class="btn btn-sm btn-danger" @click="removeFile">&times;</button>
+                </div>
+                <?= Html::img($model->image, ['class' => 'w-100', 'alt' => $model->title]);?>
+            </div>
+        <?php } ?>
         <div v-if="preview">
             <div class="position-relative">
                 <div class="position-absolute top-0 end-0">
@@ -55,7 +75,7 @@
 
         <?= $form->field($model, 'subtitle')->textarea([
             'class' => 'form-control', 
-            'rows' => '6', 
+            'rows' => '5', 
             'placeholder' => 'Напишите здесь краткое описание...'
         ]);?>
 
@@ -77,17 +97,18 @@
         <?=$form->field($model, 'body')->widget(ToastEditor::class, [
             'options' => [
                 'id' => 'editor',
-                'height' => 600
+                'height' => 600,
+                'content' => $file,
+                'folder' => $model->body
             ]
         ])->label(false);?>
 
-        <?=$form->field($model, 'href')->textInput(['class' => 'form-control', 'v-model' => 'href']);?>
+        <?=$form->field($model, 'href')->textInput(array_merge($href, $hrefParams));?>
 
         <div>
-            <button type="submit" class="<?=$colorButton;?>" @click="getSendForm('<?=$id?>')">
-                <?=$textButton;?>
-            </button>
-            <?php // =Html::submitButton($textButton, ['class' => $colorButton, '@click' => 'getSendForm($id)']);?>
+            <?=Html::submitButton($textButton, ['class' => $colorButton, '@click' => 'getSendForm($id)']);?>
         </div>
     <?php ActiveForm::end(); ?>
+
+    <pre><?php //var_dump($file);?></pre>
 </div>
