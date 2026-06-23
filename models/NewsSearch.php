@@ -50,9 +50,9 @@ class NewsSearch extends News
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            // 'pagination' => [
-            //     'pageSize' => 12,
-            // ],
+            'pagination' => [
+                'pageSize' => 6,
+            ],
         ]);
 
         $this->load($params);

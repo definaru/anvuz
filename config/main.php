@@ -61,7 +61,7 @@ return [
                 '/document/<href:[\w_\/-]+>' => 'site/document',
                 '/admin/profile' => 'admin/profiles/account',
                 '/admin/profile/<action:(index|account|view|update|delete)>' => 'admin/profiles/<action>',
-                '/admin/<action:(panel|setting|users|events|universities|news|help|location)>' => 'admin/admin/<action>',
+                '/admin/<action:(panel|setting|users|events|universities|news|help|location|reset-password)>' => 'admin/admin/<action>',
                 '/admin/news/<action:(list|archive|create)>' => 'admin/news/<action>',
                 '/sitemap' => 'sitemap/sitemap/page',
                 '/sitemap.xml' => 'sitemap/sitemap/index',

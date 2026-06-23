@@ -33,16 +33,20 @@
                 </div>
                 <div class="row g-0 mb-5">
                     <div class="col-12 col-md-3">
-                        <h4 style="position: sticky;top: 111px">
-                            <span class="badge text-bg-secondary px-3">
-                                <?=Yii::$app->formatter->asDateTime($new->create_date, 'php: j F, Y');?>
-                            </span>
-                        </h4>
+                        <div style="position: sticky;top: 111px">
+                            <h4>
+                                <span class="badge text-bg-secondary px-3">
+                                    <?=Yii::$app->formatter->asDateTime($new->create_date, 'php: j F, Y');?>
+                                </span>
+                            </h4>
+                            <?php if (\Yii::$app->user->can('admin')) { ?>
+                            <p><a href="/admin/news/update?id=<?=$new->id;?>" target="_blank">редактировать</a></p>
+                            <?php } ?>                        
+                        </div>
                     </div>
                     <div class="col-12 col-md-9 news">
                         <figure class="mb-4">
                             <img src="<?=$new->image;?>" class="rounded-4 w-100" alt="<?=$new->title;?>" />
-                            <!-- <figcaption class="text-secondary">Подпись к картинке</figcaption> -->
                         </figure>
                         <?php 
                             try {

@@ -1,9 +1,8 @@
 <?php
     use yii\bootstrap5\Html;
     use yii\bootstrap5\ActiveForm;
-
+    /** @var frontend\modules\auth\models\User $model */
     $subtitle = Html::a('Регистрация', '/auth/signup', ['class' => 'link']);
-
     $this->title = 'Вход';
     $this->blocks['subtitle'] = 'Нет учётной записи? '.$subtitle;
 
@@ -25,6 +24,16 @@
         </div>
     </div>
 <?php endif; ?>
+
+<?php if (Yii::$app->session->hasFlash('successPassword')): ?>
+    <div class="p-3">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= Yii::$app->session->getFlash('successPassword') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>        
+    </div>
+<?php endif; ?>
+
 <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'enableAjaxValidation'   => true,

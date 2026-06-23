@@ -1,5 +1,6 @@
 <?php
     use yii\helpers\Html;
+    /** @var frontend\models\News $model */
     $datetime = Yii::$app->formatter->asDateTime($model->create_date, 'php: j F, Y')
 ?>  
 <div class="card border-0 h-100 bg-white rounded-4">

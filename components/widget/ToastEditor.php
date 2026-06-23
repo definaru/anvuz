@@ -35,9 +35,23 @@ class ToastEditor extends InputWidget
         $folder = $this->options['folder'] ?? uniqid();
         $jsContent = Json::encode($content, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         $js = <<<JS
-        
+
+        //const defaultToolbar = toastui.Editor.getDefaultOptions().toolbarItems[0];
         const editor = new toastui.Editor({
             el: document.querySelector('#$id'),
+            toolbarItems: [
+                ['heading', 'bold', 'italic', 'strike'],
+                ['hr', 'quote'],
+                ['ul', 'ol', 'task', 'indent', 'outdent'],
+                ['table', 'image', 'link'],
+                ['code', 'codeblock'],
+                [{
+                    name: 'fullScreen',
+                    tooltip: 'На весь экран',
+                    el: fullScreenButton,
+                }]
+            ],
+            placeholder: 'Пожалуйста, введите сюда основной текст...',
             height: '$height'+'px',
             initialEditType: 'wysiwyg',
             previewStyle: 'vertical',

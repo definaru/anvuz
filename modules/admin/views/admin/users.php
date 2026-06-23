@@ -1,6 +1,8 @@
 <?php
     use yii\helpers\Html;
     use yii\grid\GridView;
+    use frontend\modules\admin\models\AdminPanel;
+    /** @var frontend\modules\auth\models\User $dataProvider */
     $totalCount = $dataProvider->totalCount;
     $this->title = 'Профили';
 ?>
@@ -71,28 +73,7 @@
                 ]);?>
             </div>
             <div class="card-footer bg-white border-top-0">
-                <?=GridView::widget([
-                    'dataProvider' => $dataProvider,  
-                    'showHeader' => false,
-                    'showOnEmpty' => false,
-                    'summary' => 'Страницы: {page} из {pageCount}',
-                    'layout' => '<div class="d-flex align-items-center justify-content-between">{pager}<span class="btn">{summary}</span></div>',
-                    'pager' => [
-                        'maxButtonCount' => 10, // максимум 10 кнопок
-                        'options' => ['class' => 'pagination m-0'],
-                        'linkOptions' => ['class' => 'page-link'],
-                        'pageCssClass' => ['class' => 'page-item'],
-                        'registerLinkTags' => false,
-                        'nextPageCssClass' => 'page-item next',
-                        'prevPageCssClass' => 'page-item prev',
-                        'disabledPageCssClass' => 'disabled',
-                        'nextPageLabel' => '<div aria-hidden="true">&raquo;</div>', // стрелочка в право
-                        'prevPageLabel' => '<div aria-hidden="true">&laquo;</div>', // стрелочка влево
-                        'disabledListItemSubTagOptions' => ['tag' => 'div', 'class' => 'page-link', 'aria-label' => 'Next']
-                        //'firstPageLabel' => 'Начало',
-                        //'lastPageLabel' => 'Конец'
-                    ],  
-                ]);?>
+                <?=AdminPanel::pagination($dataProvider);?>
             </div>
         </div>  
     </div>  

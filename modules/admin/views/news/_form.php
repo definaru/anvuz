@@ -31,6 +31,9 @@
             color: red;
             font-size: 16px;
         }
+        .placeholder {
+            background-color: transparent;
+        }
     ');
 ?>
 <div class="card-body">
@@ -41,7 +44,7 @@
 
         <?= $form->field($model, 'title')->textInput(array_merge($title, $titleParams));?>
         <?php if(isset($model->image)) { ?>
-            <div class="position-relative">
+            <div class="position-relative test">
                 <div class="position-absolute top-0 end-0">
                     <button type="button" class="btn btn-sm btn-danger" @click="removeFile">&times;</button>
                 </div>

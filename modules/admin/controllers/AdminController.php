@@ -5,7 +5,8 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use frontend\models\ProfileSearch;
+use frontend\models\ProfilesSearch;
+use frontend\modules\auth\models\User;
 
 
 class AdminController extends Controller
@@ -15,19 +16,19 @@ class AdminController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['panel'],
                 'rules' => [
                     [
-                        'actions' => ['panel'],
                         'allow' => true,
-                        'roles' => ['@', 'admin'],
-                    ]
+                        'roles' => ['admin'],
+                    ],
+                    ['allow' => false]
                 ]
-            ],
+            ], 
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
-                    'logout' => ['post']
+                    'logout' => ['post'],
+                    'reset-password' => ['post']
                 ]
             ]
         ];
@@ -51,7 +52,7 @@ class AdminController extends Controller
 
     public function actionUsers()
     {
-        $searchModel = new ProfileSearch();
+        $searchModel = new ProfilesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('users', [
@@ -88,5 +89,19 @@ class AdminController extends Controller
     public function actionHelp()
     {
         return $this->render('help');
+    }
+
+    public function actionResetPassword()
+    {
+        $password = Yii::$app->request->post('password');
+        $id = Yii::$app->user->identity->id;
+        $model = User::findOne($id);
+        $model->setPassword($password);
+        $model->generateAuthKey();
+        
+        if ($model->validate() && $model->save()) {
+            Yii::$app->session->setFlash('successPassword', 'Пароль успешно изменён'); 
+            return $this->goBack(Yii::$app->request->referrer);
+        }
     }
 } 

@@ -9,6 +9,7 @@
     $menu = isset($this->blocks['menu']) ? $this->blocks['menu'] : 'bs-primary';
     $bg = isset($this->blocks['bg']) ? $this->blocks['bg'] : '';
     $breadcrumbs = isset($this->blocks['breadcrumbs']) ? $this->blocks['breadcrumbs'] : '';
+    /** @var $this $content */
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

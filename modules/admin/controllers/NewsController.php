@@ -40,10 +40,7 @@ class NewsController extends Controller
     {
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $model = News::find()->all();
-
         return $this->render('list', [
-            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider
         ]);

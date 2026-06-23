@@ -17,6 +17,7 @@ class EditorAsset extends AssetBundle
     ];
     public $js = [
         'ui-admin/editor/js/toastui-editor-all.min.js',
+        'ui-admin/editor/js/toolbar.js',
         'https://uicdn.toast.com/editor/latest/i18n/ru-ru.js'
     ];  
 }

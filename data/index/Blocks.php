@@ -53,6 +53,7 @@ class Blocks
             'content' => [
                 'dataProvider' => $dataProvider,
                 'slide' => [
+                    ['image' => '/data/news/photo/6a33feb3070fb/2036985087.jpg'],
                     ['image' => '/site/image/slide/10yrygvrtgrth.jpg'],
                     ['image' => '/site/image/slide/14yrygvrtgrth.jpg'],
                     ['image' => '/site/image/slide/30yrygvrtgrth.jpg'],
