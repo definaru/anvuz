@@ -8,14 +8,11 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * CityController implements the CRUD actions for City model.
- */
+
 class CityController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
+
+    /** @inheritDoc */
     public function behaviors()
     {
         return [
@@ -26,11 +23,8 @@ class CityController extends Controller
         ];
     }
 
-    /**
-     * Lists all City models.
-     *
-     * @return string
-     */
+    
+    /** @return string */
     public function actionIndex()
     {
         $searchModel = new CitySearch();

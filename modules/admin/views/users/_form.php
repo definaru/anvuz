@@ -12,7 +12,7 @@
             'id' => 'user',
             'options' => ['class' => 'vstack gap-3']
         ]); ?>
-            <?= $form->field($model, 'password_hash')->textInput();?>
+            <?= $form->field($model, 'password_hash')->hiddenInput()->label(false);?>
             <?= $form->field($model, 'email')->textInput();?>
             <?= $form->field($model, 'status')->dropDownList(
                 User::getStatus(), 

@@ -4,6 +4,8 @@
     use yii\helpers\Markdown;
     /** @var frontend\models\News $model */
     //$this->header = 'Список новостей';
+
+    $folder = $model->body == '' ? $model->id : $model->body;
     $this->title = 'Просмотр записи';
     $this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => '/admin/news/list'];
     $this->params['breadcrumbs'][] = $this->title;
@@ -22,9 +24,10 @@
                 <?=Html::tag('h4', $model->subtitle, ['class' => 'text-secondary']);?>
                 <?=Html::img($model->image, ['class' => 'w-100 rounded', 'alt' => $model->title]);?>
                 <div id="news">
+
                     <?php 
                         try {
-                            $filePath = Yii::getAlias('@frontend/web/data/news/'.$model->id.'.md');
+                            $filePath = Yii::getAlias('@frontend/web/data/news/'.$folder.'.md');
                             $file = file_get_contents($filePath);                    
                             echo Markdown::process($file, 'gfm');
                         } catch (ViewNotFoundException $e) {
@@ -34,18 +37,23 @@
                 </div>
                 <?=Html::tag('small', 'Дата публикации: '.$model->create_date, ['class' => 'text-secondary']);?>
                 <hr class="m-0" />
-                <div>
+                <div class="d-flex gap-2">
                     <?=Html::a(
                         'Открыть на сайте', 
                         '/news/'.$model->href, 
                         [
-                            'class' => 'btn btn-primary btn-lg', 
+                            'class' => 'btn btn-primary btn-lg px-4', 
                             'target' => '_blank'
                         ]
+                    );?>
+                    <?=Html::a(
+                        'Редактировать', 
+                        ['news/update', 'id' => $model->id],
+                        ['class' => 'btn btn-dark btn-lg px-4']
                     );?>
                 </div>
             </div>             
         </div>
     </div>
 </div>
-<pre><?php // var_dump($model); ?></pre>
+<pre><?php // var_dump($folder); ?></pre>

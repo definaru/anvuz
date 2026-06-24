@@ -3,7 +3,8 @@ namespace frontend\modules\admin\controllers;
 
 //use Yii;
 use frontend\modules\auth\models\User;
-use frontend\modules\auth\models\EditUser;
+//use frontend\modules\auth\models\EditUser;
+use frontend\models\AuthAssignment;
 use yii\web\NotFoundHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -31,13 +32,23 @@ class UsersController extends Controller
 
 
     /** @param int $id */
+    public function actionRole($id)
+    {
+        $model = AuthAssignment::find()->where(['user_id' => $id])->one();
+        if ($model->load($this->request->post()) && $model->save()) {
+            return $this->redirect('/admin/users');
+        }
+        return $this->render('role', ['model' => $model]);
+    }
+
+
+    /** @param int $id */
     public function actionUpdate($id)
     {
         // EditUser::update($id);
         $model = $this->findModel($id);
         if ($model->load($this->request->post()) && $model->save()) {
-            //$model->upload($model->uuid);
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect('/admin/users');
         }
         return $this->render('update', ['model' => $model]);
     }

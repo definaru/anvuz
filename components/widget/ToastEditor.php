@@ -5,11 +5,12 @@ use Yii;
 use yii\web\View;
 use yii\helpers\Html;
 use yii\helpers\Json;
-use yii\widgets\InputWidget;
+// use yii\widgets\InputWidget;
+use yii\base\Widget;
 use frontend\assets\EditorAsset;
 
 
-class ToastEditor extends InputWidget
+class ToastEditor extends Widget
 {
     public $options = [];
 
@@ -21,8 +22,8 @@ class ToastEditor extends InputWidget
     public function run()
     {
         $id = $this->options['id'];
-        $this->registerClientScript($id);
-        return Html::tag('div', $this->value, ['id' => $id]);
+        $this->registerClientScript($id); // $this->value
+        return Html::tag('div', '', ['id' => $id]);
     }
 
 
@@ -36,7 +37,6 @@ class ToastEditor extends InputWidget
         $jsContent = Json::encode($content, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         $js = <<<JS
 
-        //const defaultToolbar = toastui.Editor.getDefaultOptions().toolbarItems[0];
         const editor = new toastui.Editor({
             el: document.querySelector('#$id'),
             toolbarItems: [

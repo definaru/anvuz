@@ -4,7 +4,7 @@
     use yii\helpers\Markdown;
 
     /** @var frontend\models\News $new */
-
+    $folder = $new->body == '' ? $new->id : $new->body;
     $this->registerCss('
         h1, h2, h3, h4, h5, h6 {
             font-weight: 600;
@@ -50,7 +50,7 @@
                         </figure>
                         <?php 
                             try {
-                                $filePath = Yii::getAlias('@frontend/web/data/news/'.$new->id.'.md');
+                                $filePath = Yii::getAlias('@frontend/web/data/news/'.$folder.'.md');
                                 $file = file_get_contents($filePath);                    
                                 echo Markdown::process($file, 'gfm');
                             } catch (ViewNotFoundException $e) {

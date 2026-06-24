@@ -72,8 +72,8 @@
                             'header' => 'Настройки',
                             'headerOptions' => ['width' => '80'],
                             'template' => '{view} {update} {delete}',
-                        ],
-                    ],
+                        ]
+                    ]
                 ]);?>                
             </div>
             <div class="card-footer bg-white border-top-0">

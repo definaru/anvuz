@@ -1,5 +1,6 @@
 <?php
     use yii\web\View;
+    use yii\helpers\Json;
     /** @var frontend\models\News $model */
     $this->title = 'Редактирование новости';
     $this->params['breadcrumbs'][] = ['label' => 'Список новостей', 'url' => ['list']];
@@ -22,6 +23,12 @@
         }
     JS;
     $this->registerJs($js, View::POS_END);
+    $options = [
+        'token'   => Yii::$app->request->csrfToken,
+        'user_id' => Yii::$app->user->identity->id,
+        'model'   => $model
+    ];
+    $this->registerJs("const anvuz_data = ".Json::encode($options).";", View::POS_HEAD);
 ?>
 <h2><?=$this->title;?></h2>
 <div class="row">

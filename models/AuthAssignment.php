@@ -1,9 +1,9 @@
 <?php
 namespace frontend\models;
+use frontend\modules\auth\models\User;
 
 class AuthAssignment extends \yii\db\ActiveRecord
 {
-
     /** {@inheritdoc} */
     public static function tableName()
     {
@@ -23,10 +23,15 @@ class AuthAssignment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'item_name' => 'Item name',
+            'item_name' => 'Роли',
             'user_id' => 'User id',
             'created_at' => 'Created date'
         ];
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
 }

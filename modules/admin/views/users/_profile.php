@@ -3,17 +3,18 @@
     use yii\i18n\Formatter;
     use frontend\components\icons\Icons;
 
-    $formatter = new Formatter(['locale' => 'ru']);
     /** @var frontend\modules\auth\models\User $profile */
+    $formatter = new Formatter(['locale' => 'ru']);
     $user = $profile->user;
     $name = $profile->lastname.' '.$profile->firstname.' '.$profile->middlename;
     $contacts = $profile->contacts ?? null;
+    $avatar = $profile->image == '' || $profile->image === null ? '/data/users/avatar/male.jpg' : $profile->image;
 ?>
 <div class="vstack gap-2">
     <div class="card border-0 shadow-sm p-3">
         <div class="d-flex gap-3">
-            <?=Html::img($profile->image, ['class' => 'rounded-2', 'alt' => $name]);?>
-            <div class="vstack gap-1  justify-content-center">
+            <?=Html::img($avatar, ['class' => 'rounded-2', 'style' => 'width: 150px', 'alt' => $name]);?>
+            <div class="vstack gap-1 justify-content-center">
                 <h5 class="m-0"><?=$name;?></h5>
                 <p class="m-0"><?=$profile->position;?></p>
                 <div><?=Html::mailto($user->email);?></div>

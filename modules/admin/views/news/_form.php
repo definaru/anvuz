@@ -4,11 +4,9 @@
     use frontend\components\widget\ToastEditor;
     use frontend\models\News;
 
+    /** @var string $folder */
     /** @var frontend\models\News $model */
-    $title = [
-        'class' => 'form-control fw-bold', 
-        'placeholder' => 'Заголовок статьи'
-    ];
+    $title = ['class' => 'form-control fw-bold', 'placeholder' => 'Заголовок статьи'];
     $titleParams = $model->isNewRecord ? ['@input' => 'generateSlug', 'v-model' => 'title'] : [];
 
     $href = ['class' => 'form-control', 'placeholder' => 'URL адрес новости...'];
@@ -17,15 +15,23 @@
     $textButton = $model->isNewRecord ? 'Создать' : 'Обновить';
     $colorButton = $model->isNewRecord ? 'btn btn-primary px-4' : 'btn btn-success px-4';
 
-    $csrf = Yii::$app->request->csrfToken;
-    $id = $model->body;
+    $public = ['1' => 'В опубликованное', '2' => 'В черновик'];
+    $publicParams = $model->isNewRecord ? [] : ['3' => 'В архив'];
 
     $category = [
         '1' => 'Новости',
         '2' => 'События',
         '3' => 'Университеты'
     ];
-    $file = News::getContent($model); 
+    $file = News::getContent($model);
+    $fieldCity = [
+        'options' => ['class' => 'form-group has-feedback'],
+        'template' => Html::tag(
+            'div', 
+            "{input}".Html::button('+', ['class' => 'btn btn-dark']), 
+            ['class' => 'input-group']
+        ) 
+    ];
     $this->registerCss('
         .help-block {
             color: red;
@@ -37,12 +43,8 @@
     ');
 ?>
 <div class="card-body">
-    <?php $form = ActiveForm::begin([
-        'id' => 'new-form',
-        'options' => ['class' => 'vstack gap-3'],
-    ]); ?>
-
-        <?= $form->field($model, 'title')->textInput(array_merge($title, $titleParams));?>
+    <?php $form = ActiveForm::begin(['id' => 'new-form', 'options' => ['class' => 'vstack gap-3']]);?>
+        <?=$form->field($model, 'title')->textInput(array_merge($title, $titleParams));?>
         <?php if(isset($model->image)) { ?>
             <div class="position-relative test">
                 <div class="position-absolute top-0 end-0">
@@ -51,6 +53,7 @@
                 <?= Html::img($model->image, ['class' => 'w-100', 'alt' => $model->title]);?>
             </div>
         <?php } ?>
+
         <div v-if="preview">
             <div class="position-relative">
                 <div class="position-absolute top-0 end-0">
@@ -64,7 +67,7 @@
             <label class="control-label" for="news-image">Обложка</label>
             <input 
                 type="file" 
-                @change="loadImage($event, '<?=$id?>', '<?=$csrf?>')" 
+                @change="loadImage($event)" 
                 class="form-control" 
                 accept="image/*"
             />
@@ -81,37 +84,42 @@
             'rows' => '5', 
             'placeholder' => 'Напишите здесь краткое описание...'
         ]);?>
+        
+        <?=ToastEditor::widget([
+            'options' => [
+                'id' => 'editor',
+                'height' => 600,
+                'content' => $file,
+                'folder' => $folder ?? $model->body
+            ]
+        ]);?>
+        <?=$form->field($model, 'body')->textInput(['value' => $folder ?? $model->body]);?>
 
-        <div class="row g-2">
+        <div class="row mt-4">
             <div class="col-md-6 col-12">
-                <?=$form->field($model, 'category')->dropDownList(
+                <?=$form->field($model, 'is_public')->dropDownList(
+                    array_merge($public, $publicParams), 
+                    [
+                        'prompt' => 'Выберите статус публикации', 
+                        'class' => 'form-select'
+                    ]
+                )->label(false);?>                
+            </div>
+            <div class="col-md-6 col-12">
+                <?=$form->field($model, 'category', $fieldCity)->dropDownList(
                     $category, 
                     [
                         'prompt' => 'Выберите категорию', 
                         'class' => 'form-select'
                     ]
                 )->label(false);?>
-            </div>
-            <div class="col-md-6 col-12">
-                <?=Html::button('+', ['class' => 'btn btn-dark']);?>
-            </div>
+            </div>            
         </div>
-        
-        <?=$form->field($model, 'body')->widget(ToastEditor::class, [
-            'options' => [
-                'id' => 'editor',
-                'height' => 600,
-                'content' => $file,
-                'folder' => $model->body
-            ]
-        ])->label(false);?>
 
         <?=$form->field($model, 'href')->textInput(array_merge($href, $hrefParams));?>
 
         <div>
-            <?=Html::submitButton($textButton, ['class' => $colorButton, '@click' => 'getSendForm($id)']);?>
+            <?=Html::submitButton($textButton, ['class' => $colorButton, '@click' => 'getSendForm()']);?>
         </div>
     <?php ActiveForm::end(); ?>
-
-    <pre><?php //var_dump($file);?></pre>
 </div>

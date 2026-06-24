@@ -127,16 +127,19 @@ class ApiController extends Controller
     }
 
 
-    public function actionEditorMarkdown(string $folder, string $text)
+    public function actionEditorMarkdown()
     {
+        $post = Yii::$app->request->post();
+        $folder = $post['folder'];
+        $content = $post['content'];
         $file = Yii::getAlias('@frontendWeb') . '/data/news/';
-        if(!is_dir($file)) {
-            FileHelper::createDirectory($file);
-        }
+        //if(!is_dir($file)) {
+        FileHelper::createDirectory($file);
+        //}
         $path = $file.$folder.'.md';
-        if ($text) {
+        if ($content) {
             $fp = fopen($path, "wr+");
-            fwrite($fp, $text);
+            fwrite($fp, $content);
             fclose($fp);
             $res = [
                 'code' => 200,

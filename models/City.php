@@ -1,29 +1,22 @@
 <?php
-
 namespace frontend\models;
 
-use yii\db\ActiveRecord;
-
 /**
- * This is the model class for table "city".
- *
  * @property int $id
  * @property string $namecity
  * @property string $region
  */
-class City extends ActiveRecord
+class City extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+
+    /** {@inheritdoc} */
     public static function tableName()
     {
         return 'city';
     }
 
-    /**
-     * {@inheritdoc}
-     */
+
+    /** {@inheritdoc} */
     public function rules()
     {
         return [
@@ -32,15 +25,14 @@ class City extends ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
+
+    /** {@inheritdoc} */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'namecity' => 'Namecity',
-            'region' => 'Region',
+            'namecity' => 'Название города',
+            'region' => 'Регион',
         ];
     }
 

@@ -64,10 +64,9 @@ class NewsController extends Controller
         $model = new News();
         $model->create_date = date('Y-m-d H:i:s');
         $model->id_user = Yii::$app->user->identity->id;
-        $model->id_meta = 1;
-        $model->body = uniqid();
+        $model->id_meta = 0;
+        //$model->body = uniqid();
         if ($model->load(Yii::$app->request->post())) {
-            sleep(2);
             if($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }

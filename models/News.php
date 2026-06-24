@@ -16,10 +16,11 @@ class News extends ActiveRecord
     public function rules()
     {
         return [
+            [['body'], 'default', 'value' => null],
             [['title', 'subtitle', 'href'], 'required'],
             [['id_meta', 'id_user'], 'integer'],
-            [['create_date', 'update_date'], 'safe'],
-            [['category', 'title', 'subtitle', 'image', 'body', 'href'], 'string', 'max' => 255],
+            [['is_public', 'create_date', 'update_date'], 'safe'], //, 'body'
+            [['category', 'title', 'subtitle', 'image', 'href'], 'string', 'max' => 255],
         ];
     }
 
@@ -35,6 +36,7 @@ class News extends ActiveRecord
             'image' => 'Обложка',
             'body' => 'Body File',
             'href' => 'Ссылка на новость',
+            'is_public' => 'Статус публикации',
             'create_date' => 'Дата создания',
             'update_date' => 'Дата обновления',
         ];
@@ -43,10 +45,11 @@ class News extends ActiveRecord
 
     public static function getContent(News $model)
     {
+        $folder = $model->body ?: $model->id;
         if($model->isNewRecord) {
             return '';
         } else {
-            $filePath = Yii::getAlias('@frontend/web/data/news/'.$model->id.'.md');
+            $filePath = Yii::getAlias('@frontend/web/data/news/'.$folder.'.md');
             return file_get_contents($filePath);            
         }
     }
