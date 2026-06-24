@@ -79,7 +79,7 @@ class University extends \yii\db\ActiveRecord
 
     public function getProfile()
     {
-        return $this->hasOne(Profiles::class, ['id' => 'person'])->with('location', 'section', 'contacts');
+        return $this->hasOne(Profiles::class, ['id' => 'person'])->with('location', 'sections', 'contacts');
     }
 
 

@@ -8,6 +8,8 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use frontend\models\Profiles;
+use frontend\models\AuthAssignment;
+use frontend\models\Authitem;
 
 /**
  * User model
@@ -32,9 +34,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function tableName()
     {
         return '{{%user}}';
@@ -61,9 +61,25 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
+
+    public static function getStatus()
+    {
+        return [
+            self::STATUS_DELETED  => 'Заблокирован',
+            self::STATUS_INACTIVE => 'В ожидании',
+            self::STATUS_ACTIVE   => 'Активирован'
+        ];
+    }
+    public static function getColorStatus()
+    {
+        return [
+            self::STATUS_DELETED  => 'badge text-danger bg-danger-subtle',
+            self::STATUS_INACTIVE => 'badge text-warning bg-warning-subtle',
+            self::STATUS_ACTIVE   => 'badge text-success bg-success-subtle'
+        ];
+    }
+
+    /** {@inheritdoc} */
     public static function findIdentity($id)
     {
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
@@ -78,6 +94,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
 
+    /** @param string $email */
     public static function findByUserEmail($email)
     {
         //, 'status' => self::STATUS_ACTIVE
@@ -209,8 +226,29 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
+    public static function getColorRole()
+    {
+        return [
+            'admin' => 'badge text-bg-success',
+            'moderator' => 'badge text-bg-primary',
+            'teacher' => 'badge text-bg-warning',
+            'student' => 'badge text-bg-secondary',
+            'user' => 'badge text-bg-dark'
+        ];
+    }
+
     public function getProfile()
     {
         return $this->hasOne(Profiles::class, ['uuid' => 'username']);
+    }
+
+    public function getRoleName()
+    {
+        return $this->hasOne(Authitem::class, ['name' => 'item_name'])->via('roles');
+    }
+
+    public function getRoles()
+    {
+        return $this->hasOne(AuthAssignment::class, ['user_id' => 'id']);
     }
 }

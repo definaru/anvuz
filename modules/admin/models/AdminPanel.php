@@ -28,7 +28,7 @@ class AdminPanel
                 'icon' => Icons::usersRound($size, $color, 1),
                 'count' => Profiles::find()->count(),
                 'title' => 'Профиль Профиля Профилей',
-                'href' => '/admin/users'
+                'href' => '/admin/profile/index'
             ],
             [
                 'icon' => Icons::fileText($size, $color, 1),

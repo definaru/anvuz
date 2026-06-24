@@ -1,7 +1,7 @@
 <?php
 
 namespace frontend\data;
-use frontend\components\icons\Icons;
+// use frontend\components\icons\Icons;
 
 class AsideData
 {
@@ -10,7 +10,7 @@ class AsideData
         return [
             [
                 'icon' => '',
-                'title' => 'Страницы',
+                'title' => 'Разделы',
                 'link' => '',
                 'value' => '',
                 'list' => 'label'

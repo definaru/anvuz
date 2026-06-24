@@ -74,4 +74,4 @@
     </div>
 </div>
 
-<pre><?php var_dump($model->getErrors());?></pre>
+<pre><?php // var_dump($model->getErrors());?></pre>

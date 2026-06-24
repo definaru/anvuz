@@ -5,7 +5,7 @@
     /** @var frontend\models\Profiles $model */
 
     $this->title = $model->firstname;
-    $this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];
+    $this->params['breadcrumbs'][] = ['label' => 'Профили', 'url' => ['index']];
     $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profiles-view">
@@ -39,7 +39,7 @@
             ],
             [
                 'attribute' => 'section',
-                'value' => $model->sections->name, 
+                'value' => $model->sections->name ?? '-', 
             ],
             'create_date'
         ],

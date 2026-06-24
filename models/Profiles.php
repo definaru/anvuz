@@ -4,6 +4,7 @@ namespace frontend\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
+use frontend\modules\auth\models\User;
 
 /**
  * This is the model class for table "profiles".
@@ -98,6 +99,11 @@ class Profiles extends ActiveRecord
     public function getLocation()
     {
         return $this->hasOne(City::class, ['id' => 'city'])->select('id, namecity');
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['username' => 'uuid']);
     }
 
 }

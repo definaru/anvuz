@@ -52,13 +52,10 @@ class AdminController extends Controller
 
     public function actionUsers()
     {
-        $searchModel = new ProfilesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('users', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider
-        ]);
+        // $searchModel = new ProfilesSearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model = User::find();
+        return $this->render('users', ['model' => $model]);
     }
 
     public function actionEvents()

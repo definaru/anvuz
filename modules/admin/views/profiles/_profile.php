@@ -27,9 +27,13 @@
                         </small>
                     </div>
                     <div>
+                        <?= Html::a(Icons::penLine(), ['view', 'id' => $profile->id], ['class' => 'btn btn-primary']);?>
+                        <?php /*
                         <a href="#" class="btn btn-primary">
                             <?=Icons::penLine();?>
-                        </a>
+                        </a>(<?=$profile->id;?>)                        
+                        */ ?>
+
                     </div>
                 </div>            
             </div>

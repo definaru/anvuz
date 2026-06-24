@@ -1,80 +1,119 @@
 <?php
     use yii\helpers\Html;
-    use yii\grid\GridView;
-    use frontend\modules\admin\models\AdminPanel;
-    /** @var frontend\modules\auth\models\User $dataProvider */
-    $totalCount = $dataProvider->totalCount;
-    $this->title = 'Профили';
+    use frontend\modules\auth\models\User;
+    use frontend\components\icons\Icons;
+    /** @var frontend\modules\auth\models\User $model */
+    $this->title = 'Пользователи';
+    $this->params['breadcrumbs'][] = $this->title;
+    $this->registerCss('
+        table td {
+            vertical-align: middle;
+        }
+        th:first-child, td:first-child {
+            text-align: center;
+        }
+    ');
+    $status = User::getStatus();
+    $color = User::getColorStatus();
+    $colorRole = User::getColorRole();
 ?>
-<?=Html::tag('p', 'Список пользователей (' . $totalCount . ')', ['class' => 'text-secondary m-0']);?>
-<?= Html::tag('h1', $this->title);?>
+<div class="d-flex align-items-center gap-2">
+    <?= Html::tag('h1', $this->title);?> 
+    <span class="badge text-bg-primary"><?=$model->count();?></span>    
+</div>
+
 <div class="row g-3 py-3">
     <div class="col-md-12">
         <div class="card border-0 shadow-sm">
             <div class="card-body p-0">
-                <?= GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    'layout' => '{items}',
-                    'emptyTextOptions' => ['tag' => 'p', 'class' => 'text-center text-danger'],
-                    'emptyText' => 'По вашему запросу ничего не найдено', 
-                    'tableOptions' => ['class' => 'table table-hover mb-0'],
-                    'columns' => [
-                        [
-                            'class' => 'yii\grid\SerialColumn',
-                            'headerOptions' => ['width' => '50', 'style' => 'text-align: center'],
-                            'contentOptions' => [
-                                'class' => 'ps-4',
-                                'style' => 'vertical-align: middle'
-                            ],
-                        ],
-                        [
-                            'attribute' => 'image',
-                            'format' => 'raw',
-                            'headerOptions' => ['width' => '50'],
-                            'contentOptions' => [
-                                'style' => 'text-align: right'
-                            ],
-                            'content' => function($data){ 
-                                return Html::img($data->image, [
-                                    'style' => 'width: 50px; height: 50px; object-fit: cover',
-                                    'class' => 'thumbnail rounded-circle'
-                                ]);
-                            }
-                        ],
-                        [
-                            'label' => 'ФИО',
-                            'format' => 'raw',
-                            'contentOptions' => [
-                                'style' => 'vertical-align: middle'
-                            ],
-                            'value' => function($data) {
-                                return Html::tag('div', $data->firstname.' '.$data->middlename.' '.$data->lastname, ['class' => 'fw-semibold']);
-                            }
-                        ],
-                        // 'position',
-                        [
-                            'attribute' => 'create_date',
-                            'format' => 'raw',
-                            'contentOptions' => [
-                                'style' => 'vertical-align: middle'
-                            ],
-                            'value' => function($data) {
-                                $datetime = Yii::$app->formatter->asDateTime($data->create_date, 'php: j F, Y');
-                                return Html::tag('small', $datetime, ['class' => 'text-muted small']);
-                            }
-                        ],
-                        [
-                            'class' => 'yii\grid\ActionColumn',
-                            'header' => 'Настройки',
-                            'headerOptions' => ['width' => '80'],
-                            'template' => '{view} {update} {delete}',
-                        ],
-                    ]
-                ]);?>
-            </div>
-            <div class="card-footer bg-white border-top-0">
-                <?=AdminPanel::pagination($dataProvider);?>
+
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th width="50">#</th>
+                            <th>Username</th>
+                            <th>E-mail</th>
+                            <th>Статус</th>
+                            <th>Роль</th>
+                            <th>Дата создания</th>
+                            <th>
+                                <div class="d-flex justify-content-end pe-2">Управление</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($model->all() as $key => $item) { ?>
+                            <tr>
+                                <td>
+                                    <?=$key+1;?>
+                                </td>
+                                <td>
+                                    <strong class="text-primary">
+                                        UUID: <?=$item->username;?>
+                                    </strong>
+                                </td>
+                                <td><?=Html::mailto($item->email, null, ['target' => '_blank']);?></td>
+                                <td>
+                                    <?=Html::tag('span', $status[$item->status], ['class' => $color[$item->status]]);?>
+                                </td>
+                                <td>
+                                    <?=Html::tag(
+                                        'span', 
+                                        $item->roleName->description, 
+                                        ['class' => $colorRole[$item->roleName->name]]
+                                    );?>
+                                </td>
+                                <td><?=Yii::$app->formatter->asDate($item->created_at, 'php: d F Y');?></td>
+                                <td>
+                                    <div class="d-flex gap-1 justify-content-end">
+                                        <?= Html::a(
+                                            Icons::usb(20), 
+                                            ['users/role', 'id' => $item->id], 
+                                            [
+                                                'class' => 'btn btn-light',
+                                                'data-bs-toggle' => 'tooltip', 
+                                                'data-bs-title' => 'Изменить роль'
+                                            ]
+                                        );?>
+                                        
+                                        <?= Html::a(
+                                            Icons::pencil(20), 
+                                            ['users/update', 'id' => $item->id], 
+                                            [
+                                                'class' => 'btn btn-light',
+                                                'data-bs-toggle' => 'tooltip', 
+                                                'data-bs-title' => 'Редактировать'
+                                            ]
+                                        );?>
+                                        
+                                        <?= Html::a(
+                                            Icons::eye(20),
+                                            ['users/view', 'id' => $item->id], 
+                                            [
+                                                'class' => 'btn btn-light',
+                                                'data-bs-toggle' => 'tooltip', 
+                                                'data-bs-title' => 'Посмотреть'
+                                            ]
+                                        );?>
+
+                                        <?= Html::a(
+                                            Icons::trashTwo(20), 
+                                            ['users/delete', 'id' => $item->id], 
+                                            [
+                                                'class' => 'btn btn-light text-danger', 
+                                                'data-bs-toggle' => 'tooltip', 
+                                                'data-bs-title' => 'Удалить ?'
+                                            ]
+                                        );?>                                        
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+
             </div>
         </div>  
     </div>  
 </div>
+<pre><?php // var_dump($model->count());?></pre>
