@@ -52,6 +52,14 @@ class UsersController extends Controller
         }
         return $this->render('update', ['model' => $model]);
     }
+
+
+    /** @param int $id */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+        return $this->redirect('/admin/users');
+    }
     
     /**
      * @param int $id ID

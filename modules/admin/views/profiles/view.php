@@ -8,41 +8,44 @@
     $this->params['breadcrumbs'][] = ['label' => 'Профили', 'url' => ['index']];
     $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profiles-view">
+<div class="card border-0 shadow-sm p-3">
+    <div class="d-flex gap-3">
+        <?=$model->image !== '' ? Html::img($model->image, ['class' => 'rounded', 'style' => 'width: 210px;height:210px']) : '';?>
+        <?=DetailView::widget([
+            'model' => $model,
+            'attributes' => [
+                //'id',
+                [
+                    'label' => 'Ф.И.О.',
+                    'value' => $model->lastname.' '.$model->firstname.' '.$model->middlename
+                ],
+                // 'uuid',
+                'position',
+                [
+                    'attribute' => 'city',
+                    'value' => $model->location->namecity, 
+                ],
+                [
+                    'attribute' => 'section',
+                    'value' => $model->sections->name ?? '-', 
+                ],
+                [
+                    'attribute' => 'create_date',
+                    'value' => Yii::$app->formatter->asDateTime($model->create_date, 'php: j F, Y H:i:s')
+                ]
+            ],
+        ]);?>
+    </div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+    <div class="d-block mt-2">
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary px-4']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger px-4',
             'data' => [
                 'confirm' => 'Вы действительно хотите удалить данный профиль ?',
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
-
-    <?=DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            //'id',
-            'image',
-            'firstname',
-            'lastname',
-            'middlename',
-            //'uuid',
-            'position',
-            [
-                'attribute' => 'city',
-                'value' => $model->location->namecity, 
-            ],
-            [
-                'attribute' => 'section',
-                'value' => $model->sections->name ?? '-', 
-            ],
-            'create_date'
-        ],
-    ]);?>
+    </div>    
 </div>
 <pre><?php // var_dump($model->sections);?></pre>

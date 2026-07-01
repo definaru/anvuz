@@ -2,6 +2,7 @@
     use yii\helpers\Html;
     use frontend\components\icons\Icons;
     use frontend\components\widget\Card;
+    /** @var array $content */
     $about = $content['content']['about'];
 
     $this->registerCss('

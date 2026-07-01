@@ -37,8 +37,9 @@ class Profiles extends ActiveRecord
             [['section'], 'default', 'value' => '-'],
             [['lastname', 'firstname'], 'required'],
             [['lastname', 'firstname', 'middlename', 'position', 'uuid', 'city'], 'string', 'max' => 255],
+            [['image'], 'string'],
             [['uuid'], 'unique'],
-            [['image'], 'file', 'extensions' => 'png, jpg, jpeg', 'skipOnEmpty' => true],
+            //[['image'], 'file', 'extensions' => 'png, jpg, jpeg', 'skipOnEmpty' => false],
         ];
     }
 

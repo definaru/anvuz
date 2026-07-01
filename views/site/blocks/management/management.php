@@ -1,4 +1,5 @@
 <?php
+    /** @var string $content */
     $this->registerCss('
         #ui-table.gosduma table thead th:nth-child(2) {
             min-width: 310px

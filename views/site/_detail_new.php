@@ -2,6 +2,7 @@
     use yii\bootstrap5\Html;
     use yii\base\ViewNotFoundException;
     use yii\helpers\Markdown;
+    use frontend\components\ui\EditMode;
 
     /** @var frontend\models\News $new */
     $folder = $new->body == '' ? $new->id : $new->body;
@@ -24,7 +25,7 @@
         <div class="border border-dark-subtle rounded-4 p-4">
             <div class="col-12 col-md-8 offset-md-2 my-5 py-5">
                 <p class="text-uppercase text-muted">
-                    <?=Yii::$app->formatter->asRelativeTime($new->create_date)?>
+                    <?=\Yii::$app->formatter->asRelativeTime($new->create_date)?>
                 </p>   
                 <?=Html::tag('h1', $new->title, ['class' => 'my-4']);?>
                 <p class="lead pt-2"><?=$new->subtitle;?></p>
@@ -36,12 +37,10 @@
                         <div style="position: sticky;top: 111px">
                             <h4>
                                 <span class="badge text-bg-secondary px-3">
-                                    <?=Yii::$app->formatter->asDateTime($new->create_date, 'php: j F, Y');?>
+                                    <?=\Yii::$app->formatter->asDateTime($new->create_date, 'php: j F, Y');?>
                                 </span>
                             </h4>
-                            <?php if (\Yii::$app->user->can('admin')) { ?>
-                            <p><a href="/admin/news/update?id=<?=$new->id;?>" target="_blank">редактировать</a></p>
-                            <?php } ?>                        
+                            <?=EditMode::button('/admin/news/update?id='.$new->id);?>
                         </div>
                     </div>
                     <div class="col-12 col-md-9 news">
@@ -50,7 +49,7 @@
                         </figure>
                         <?php 
                             try {
-                                $filePath = Yii::getAlias('@frontend/web/data/news/'.$folder.'.md');
+                                $filePath = \Yii::getAlias('@frontend/web/data/news/'.$folder.'.md');
                                 $file = file_get_contents($filePath);                    
                                 echo Markdown::process($file, 'gfm');
                             } catch (ViewNotFoundException $e) {

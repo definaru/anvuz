@@ -13,6 +13,7 @@
 <div class="d-flex align-items-center justify-content-between">
     <?=Html::tag('h1', $this->title);?>    
     <?=Html::tag('p', 'Всего ' . $totalCount . ' профилелей', ['class' => 'text-secondary m-0']);?>
+    <?=Html::a('Добавить', ['create'], ['class' => 'btn btn-success px-4']);?>
 </div>
 
 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

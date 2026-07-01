@@ -1,7 +1,8 @@
 <?php
     use yii\helpers\Html;
+    use frontend\components\ui\EditMode;
     /** @var frontend\models\News $model */
-    $datetime = Yii::$app->formatter->asDateTime($model->create_date, 'php: j F, Y')
+    $datetime = \Yii::$app->formatter->asDateTime($model->create_date, 'php: j F, Y')
 ?>  
 <div class="card border-0 h-100 bg-white rounded-4">
     <div class="card-header border-0 pb-0 bg-transparent">
@@ -23,7 +24,7 @@
     </div>
     <div class="card-body mb-2">
         <small class="d-block mb-2 text-primary fw-semibold">
-            <?=$datetime;?>
+            <?=$datetime;?> <?=EditMode::button('/admin/news/update?id='.$model->id, 'span', 'ред.');?>
         </small>
         <a class="text-decoration-none text-dark" href="/news/<?=$model->href;?>">
             <?=Html::tag('h4', $model->title, ['class' => 'fw-bold m-0 line-clamp-3']);?>

@@ -31,7 +31,8 @@
                 </button>
                 <ul class="dropdown-menu p-2 border-0 shadow">
                     <li>
-                        <a class="dropdown-item" href="#">Пользователя</a>
+                        <a class="dropdown-item" href="/admin/profiles/create">Пользователя</a>
+                        <a class="dropdown-item" href="/admin/documents/create">Документы</a>
                         <a class="dropdown-item" href="#">Событие</a>
                         <a class="dropdown-item" href="#">Университет</a>
                         <a class="dropdown-item" href="/admin/news/create">Новость</a>

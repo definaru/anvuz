@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /** @var frontend\models\Profiles $model */
 
 $this->title = 'Создаём профиль';
-$this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Профили', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">

@@ -1,6 +1,7 @@
 <?php
     use yii\helpers\Html;
     use frontend\data\text\Hello;
+    use frontend\components\widget\Application;
     use frontend\components\widget\views\admin\Card;
     use frontend\modules\admin\models\AdminPanel;
     use yii\helpers\ArrayHelper;
@@ -27,23 +28,7 @@
     <?php } ?>
 
     <div class="col-12 col-md-4">
-        <div class="card border-0 shadow-sm text-white bg-primary">
-            <div class="card-body" style="height: 450px">
-                <div class="h-100" style="display: grid;align-content: space-between">
-                    <div>
-                        <p class="m-0">
-                            Количество заявок на 
-                            <?=Yii::$app->formatter->asDate(time(), 'LLLL').', '.date('Y');?>
-                        </p>
-                        <h2>Заявки на вступление</h2>                        
-                    </div>
-                    <div>
-                        <p>Заявок</p>
-                        <h1 class="display-2">0</h1>
-                    </div>                    
-                </div>
-            </div>
-        </div>
+        <?=Application::widget();?>
     </div>
     <div class="col-12 col-md-8">
         <div class="card border-0 shadow-sm">

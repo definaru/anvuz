@@ -1,12 +1,15 @@
 <?php
     use yii\bootstrap5\Html;
     use yii\widgets\ListView;
-    $href = Yii::$app->request->get('href');
+
+    /** @var frontend\models\News $new */
+    /** @var frontend\models\NewsSearch $dataProvider */
+    $href = \Yii::$app->request->get('href');
 
     $this->blocks['menu'] = 'bg-white border-bottom';
     $this->blocks['bg'] = $href ? 'bg-white' : 'bg-light';
-    $this->title = $href ? $new->title : Yii::t('app', 'news_anvuz');
-    $href ? $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'news'), 'url' => '/news'] : '';
+    $this->title = $href ? $new->title : \Yii::t('app', 'news_anvuz');
+    $href ? $this->params['breadcrumbs'][] = ['label' => \Yii::t('app', 'news'), 'url' => '/news'] : '';
     $href ? $this->params['breadcrumbs'][] = $this->title : '';
 ?>
 <?php if(!$new) { ?>

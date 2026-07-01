@@ -486,4 +486,52 @@ class Icons
         SVG;   
     }
 
+    public static function idCard($size = 24, $color = 'currentColor', $width = 2)
+    {
+        return <<<SVG
+        <svg xmlns="http://www.w3.org/2000/svg" width="$size" height="$size" viewBox="0 0 24 24" fill="none" stroke="$color" stroke-width="$width" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 10h2"/>
+            <path d="M16 14h2"/>
+            <path d="M6.17 15a3 3 0 0 1 5.66 0"/>
+            <circle cx="9" cy="11" r="2"/>
+            <rect x="2" y="5" width="20" height="14" rx="2"/>
+        </svg>
+        SVG;   
+    }
+
+    public static function layoutDashboard($size = 24, $color = 'currentColor', $width = 2)
+    {
+        return <<<SVG
+        <svg xmlns="http://www.w3.org/2000/svg" width="$size" height="$size" viewBox="0 0 24 24" fill="none" stroke="$color" stroke-width="$width" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="7" height="9" x="3" y="3" rx="1"/>
+            <rect width="7" height="5" x="14" y="3" rx="1"/>
+            <rect width="7" height="9" x="14" y="12" rx="1"/>
+            <rect width="7" height="5" x="3" y="16" rx="1"/>
+        </svg>
+        SVG;   
+    }
+
+    public static function layersPlus($size = 24, $color = 'currentColor', $width = 2)
+    {
+        return <<<SVG
+        <svg xmlns="http://www.w3.org/2000/svg" width="$size" height="$size" viewBox="0 0 24 24" fill="none" stroke="$color" stroke-width="$width" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 .83.18 2 2 0 0 0 .83-.18l8.58-3.9a1 1 0 0 0 0-1.831z"/>
+            <path d="M16 17h6"/>
+            <path d="M19 14v6"/>
+            <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 .825.178"/>
+            <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l2.116-.962"/>
+        </svg>
+        SVG;   
+    }
+
+    public static function bookMarked($size = 24, $color = 'currentColor', $width = 2)
+    {
+        return <<<SVG
+        <svg xmlns="http://www.w3.org/2000/svg" width="$size" height="$size" viewBox="0 0 24 24" fill="none" stroke="$color" stroke-width="$width" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 2v8l3-3 3 3V2"/>
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
+        </svg>
+        SVG; 
+    }
+
 }

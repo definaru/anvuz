@@ -12,6 +12,12 @@
         th:first-child, td:first-child {
             text-align: center;
         }
+        .text-bg-primary {
+            --bs-primary-rgb: 65, 31, 171; 
+        }
+        .text-primary {
+            --bs-primary-rgb: 65, 31, 171;        
+        }
     ');
     $status = User::getStatus();
     $color = User::getColorStatus();
@@ -102,7 +108,11 @@
                                             [
                                                 'class' => 'btn btn-light text-danger', 
                                                 'data-bs-toggle' => 'tooltip', 
-                                                'data-bs-title' => 'Удалить ?'
+                                                'data-bs-title' => 'Удалить ?',
+                                                'data' => [
+                                                    'confirm' => 'Удалить этого пользователя ?',
+                                                    'method' => 'post',
+                                                ],                                                
                                             ]
                                         );?>                                        
                                     </div>

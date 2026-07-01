@@ -1,5 +1,7 @@
 <?php
     use common\helpers\Html;
+    use frontend\components\ui\EditMode;
+    /** @var array $content */
 ?>
 <div class="row">
     <div class="col-12 py-5">
@@ -18,12 +20,16 @@
                                     class="avatar" 
                                 />
                                 <div class="mt-2">
-                                    <?=Html::tag('strong', $name, ['class' => 'h5 fw-bold']);?>
+                                    <div>
+                                        <?=Html::tag('strong', $name, ['class' => 'h5 fw-bold']);?>
+                                        <?=EditMode::button('/admin/profile/update?id='.$p['id'], 'span', 'ред.');?>
+                                    </div>
+                                    
                                     <p class="mb-1 d-grid" title="<?=$p["position"];?>">
                                         <?=Html::tag('small', $p["position"], ['class' => 'w-100']);?>
                                     </p>
                                     <?=Html::tag('h6', Html::tag('span', $p['location']['namecity'], ['class' => 'badge rounded-pill text-primary bs-primary']));?>
-                                    <?php // $this->render('_contacts', ['p' => $p]);?>
+                                    <?php // =$this->render('_contacts', ['p' => $p]);?>
                                 </div>
                             </div>
                         </div>

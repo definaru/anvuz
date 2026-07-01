@@ -10,10 +10,45 @@ class AsideData
         return [
             [
                 'icon' => '',
+                'title' => 'Аналитика',
+                'link' => '',
+                'value' => '',
+                'list' => 'label'
+            ],
+            [
+                'icon' => 'layoutDashboard',
+                'title' => 'Админ-панель',
+                'link' => '/admin/panel',
+                'value' => '',
+                'list' => false
+            ],
+            [
+                'icon' => 'layersPlus',
+                'title' => 'Заявки на вступление',
+                'link' => '/admin/applications',
+                'value' => '',
+                'list' => false
+            ],
+            [
+                'icon' => '',
                 'title' => 'Разделы',
                 'link' => '',
                 'value' => '',
                 'list' => 'label'
+            ],
+            [
+                'icon' => 'idCard',
+                'title' => 'Профили',
+                'link' => '/admin/profile/index',
+                'value' => '',
+                'list' => false
+            ],
+            [
+                'icon' => 'bookMarked',
+                'title' => 'Документы',
+                'link' => '/admin/documents',
+                'value' => '',
+                'list' => false
             ],
             [
                 'icon' => 'UsersRound',

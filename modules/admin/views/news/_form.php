@@ -93,7 +93,7 @@
                 'folder' => $folder ?? $model->body
             ]
         ]);?>
-        <?=$form->field($model, 'body')->textInput(['value' => $folder ?? $model->body]);?>
+        <?=$form->field($model, 'body')->hiddenInput(['value' => $folder ?? $model->body])->label(false);?>
 
         <div class="row mt-4">
             <div class="col-md-6 col-12">

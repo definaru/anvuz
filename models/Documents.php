@@ -49,11 +49,11 @@ class Documents extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'body' => 'Body',
-            'href' => 'Href',
-            'date_create' => 'Date Create',
-            'date_update' => 'Date Update',
+            'title' => 'Название документы',
+            'body' => 'Ссылка на документ',
+            'href' => 'URL адрес',
+            'date_create' => 'Дата создания',
+            'date_update' => 'Дата обновления'
         ];
     }
 

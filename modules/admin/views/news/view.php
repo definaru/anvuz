@@ -24,7 +24,6 @@
                 <?=Html::tag('h4', $model->subtitle, ['class' => 'text-secondary']);?>
                 <?=Html::img($model->image, ['class' => 'w-100 rounded', 'alt' => $model->title]);?>
                 <div id="news">
-
                     <?php 
                         try {
                             $filePath = Yii::getAlias('@frontend/web/data/news/'.$folder.'.md');
