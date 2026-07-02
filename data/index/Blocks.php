@@ -6,11 +6,13 @@ use yii\helpers\Url;
 use frontend\components\icons\Icons;
 use frontend\models\NewsSearch;
 
+
 class Blocks
 {
     public static function list()
     {
         $searchModel = new NewsSearch();
+        $searchModel->is_public = 1;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 3;
 

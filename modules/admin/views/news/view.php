@@ -2,10 +2,15 @@
     use yii\helpers\Html;
     use yii\base\ViewNotFoundException;
     use yii\helpers\Markdown;
+    use frontend\modules\admin\models\AdminPanel;
     /** @var frontend\models\News $model */
     //$this->header = 'Список новостей';
 
     $folder = $model->body == '' ? $model->id : $model->body;
+
+    $color = AdminPanel::colorPublic();    
+    $status = AdminPanel::isPublic(); 
+
     $this->title = 'Просмотр записи';
     $this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => '/admin/news/list'];
     $this->params['breadcrumbs'][] = $this->title;
@@ -19,6 +24,9 @@
 <div class="row">
     <div class="col-12 col-md-7">
         <div class="card border-0 shadow-sm p-3">
+            <div class="d-flex justify-content-end">
+                <?= Html::tag('span', $status[$model->is_public], ['class' => $color[$model->is_public]]);?>
+            </div>
             <div class="vstack gap-3">
                 <?=Html::tag('h1', $model->title, ['class' => 'fw-bold']);?>
                 <?=Html::tag('h4', $model->subtitle, ['class' => 'text-secondary']);?>

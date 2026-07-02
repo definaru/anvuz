@@ -127,6 +127,7 @@ class SiteController extends Controller
     {
         $content = BlocksNews::list();
         $searchModel = new NewsSearch();
+        $searchModel->is_public = 1;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 9;
 

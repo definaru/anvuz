@@ -24,40 +24,55 @@
     <div class="col-12 mb-5">
         <div class="border border-dark-subtle rounded-4 p-4">
             <div class="col-12 col-md-8 offset-md-2 my-5 py-5">
-                <p class="text-uppercase text-muted">
-                    <?=\Yii::$app->formatter->asRelativeTime($new->create_date)?>
-                </p>   
-                <?=Html::tag('h1', $new->title, ['class' => 'my-4']);?>
-                <p class="lead pt-2"><?=$new->subtitle;?></p>
-                <div class="row">
-                    <div class="col-12 mt-3 mb-4"><hr /></div>
-                </div>
-                <div class="row g-0 mb-5">
-                    <div class="col-12 col-md-3">
-                        <div style="position: sticky;top: 111px">
-                            <h4>
-                                <span class="badge text-bg-secondary px-3">
-                                    <?=\Yii::$app->formatter->asDateTime($new->create_date, 'php: j F, Y');?>
-                                </span>
-                            </h4>
-                            <?=EditMode::button('/admin/news/update?id='.$new->id);?>
+                <?php if($new->is_public === 1) { ?>
+                    <div>
+                        <p class="text-uppercase text-muted">
+                            <?=\Yii::$app->formatter->asRelativeTime($new->create_date)?>
+                        </p>   
+                        <?=Html::tag('h1', $new->title, ['class' => 'my-4']);?>
+                        <p class="lead pt-2"><?=$new->subtitle;?></p>
+                        <div class="row">
+                            <div class="col-12 mt-3 mb-4"><hr /></div>
                         </div>
+                        <div class="row g-0 mb-5">
+                            <div class="col-12 col-md-3">
+                                <div style="position: sticky;top: 111px">
+                                    <h4>
+                                        <span class="badge text-bg-secondary px-3">
+                                            <?=\Yii::$app->formatter->asDateTime($new->create_date, 'php: j F, Y');?>
+                                        </span>
+                                    </h4>
+                                    <?=EditMode::button('/admin/news/update?id='.$new->id);?>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-9 news">
+                                <figure class="mb-4">
+                                    <img src="<?=$new->image;?>" class="rounded-4 w-100" alt="<?=$new->title;?>" />
+                                </figure>
+                                <?php 
+                                    try {
+                                        $filePath = \Yii::getAlias('@frontend/web/data/news/'.$folder.'.md');
+                                        $file = file_get_contents($filePath);                    
+                                        echo Markdown::process($file, 'gfm');
+                                    } catch (ViewNotFoundException $e) {
+                                        echo Html::tag('code', 'The file does not exist', ['class' => 'mb-5']);
+                                    }
+                                ?> 
+                            </div>
+                        </div>                    
                     </div>
-                    <div class="col-12 col-md-9 news">
-                        <figure class="mb-4">
-                            <img src="<?=$new->image;?>" class="rounded-4 w-100" alt="<?=$new->title;?>" />
-                        </figure>
-                        <?php 
-                            try {
-                                $filePath = \Yii::getAlias('@frontend/web/data/news/'.$folder.'.md');
-                                $file = file_get_contents($filePath);                    
-                                echo Markdown::process($file, 'gfm');
-                            } catch (ViewNotFoundException $e) {
-                                echo Html::tag('code', 'The file does not exist', ['class' => 'mb-5']);
-                            }
-                        ?> 
+                <?php } else { ?>
+                    <div style="height: 1000px">
+                        <div class="alert alert-warning" role="alert">
+                            <h4 class="alert-heading mt-0">⚠️ Внимание!</h4>
+                            <p>Данная статья удалена или снята с публикации. 
+                                Возможно её вернут, если редакция допустит её к публикации, 
+                                вернитесь пожалуйста сюда позже или посмотрите <a href="/news" class="alert-link">другие новости</a>.</p>
+                            <hr>
+                            <p class="mb-0">Приносим извинения за доставленные неудобства.</p>
+                        </div>                    
                     </div>
-                </div>
+                <?php } ?>
             </div>
         </div>        
     </div>

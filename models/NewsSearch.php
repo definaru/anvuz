@@ -23,6 +23,7 @@ class NewsSearch extends News
                 'image', 
                 'body', 
                 'href', 
+                'is_public',
                 'create_date', 
                 'update_date'
             ], 'safe'],
@@ -73,6 +74,7 @@ class NewsSearch extends News
             ->andFilterWhere(['like', 'image', $this->image])
             ->andFilterWhere(['like', 'body', $this->body])
             ->andFilterWhere(['like', 'href', $this->href])
+            ->andFilterWhere(['like', 'is_public', $this->is_public])
             ->andFilterWhere(['like', 'create_date', $this->create_date])
             ->andFilterWhere(['like', 'update_date', $this->update_date]);
 

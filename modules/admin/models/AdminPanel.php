@@ -72,4 +72,23 @@ class AdminPanel
             ],  
         ]);
     }
+
+
+    public static function isPublic()
+    {
+        return [
+            1 => 'Опубликовано',
+            2 => 'Черновик',
+            3 => 'Архив'
+        ];
+    }
+
+    public static function colorPublic()
+    {
+        return [
+            1 => 'badge text-bg-success',
+            2 => 'badge text-bg-secondary',
+            3 => 'badge text-bg-danger'
+        ];
+    }
 }

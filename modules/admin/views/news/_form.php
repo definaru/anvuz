@@ -98,7 +98,8 @@
         <div class="row mt-4">
             <div class="col-md-6 col-12">
                 <?=$form->field($model, 'is_public')->dropDownList(
-                    array_merge($public, $publicParams), 
+                    //array_merge($public, $publicParams), 
+                    $public + $publicParams,
                     [
                         'prompt' => 'Выберите статус публикации', 
                         'class' => 'form-select'

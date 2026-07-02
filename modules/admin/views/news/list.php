@@ -4,10 +4,13 @@
     use frontend\modules\admin\models\AdminPanel;
     /** @var frontend\models\NewsSearch $dataProvider */
     /** @var frontend\models\NewsSearch $searchModel */
-
+    
     $totalCount = $dataProvider->totalCount;
+
     $this->title = 'Список новостей';
     $this->params['breadcrumbs'][] = $this->title;
+    $color = AdminPanel::colorPublic();    
+    $status = AdminPanel::isPublic();    
 ?>
 
 <div class="d-flex align-items-center gap-2">
@@ -61,11 +64,26 @@
                             ],
                         ],
                         [
+                            'attribute' => 'is_public',
+                            'format' => 'raw',
+                            'headerOptions' => ['width' => '250'],
+                            'value' => function($data) use ($status, $color) {
+                                return Html::tag('span', $status[$data->is_public], ['class' => $color[$data->is_public]]);
+                                //$status[$data->is_public] ?? $data->is_public;
+                            },
+                            'filter' => $status,
+                            'filterInputOptions' => [
+                                'prompt' => 'Выберите статус публикации...',
+                                'class' => 'form-select',
+                            ],                            
+                        ],                        
+                        [
                             'attribute' => 'create_date',
+                            'headerOptions' => ['width' => '150'],
+                            'filter' => false,
                             'value' => function($data) {
                                 return Yii::$app->formatter->asDateTime($data->create_date, 'php: j F, Y');
-                            },
-                            'filter' => false
+                            }
                         ],
                         [
                             'class' => 'yii\grid\ActionColumn',
