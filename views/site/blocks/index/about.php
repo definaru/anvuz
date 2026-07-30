@@ -6,9 +6,10 @@
     $about = $content['content']['about'];
 
     $this->registerCss('
-        #about svg path {fill:#411fab}
+        .action-about svg path {fill:#411fab}
         #about .card .btn  {
             color: #411fab !important;
+            cursor: default;
         }
         #about span.text-secondary {
             color: #000 !important;
@@ -32,7 +33,7 @@
         </div>   
         <div class="row g-3">
             <?php foreach($about as $item) { ?>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-4 action-about">
                     <?=Card::widget([
                         'title' => $item['title'],
                         'icon' => $item['icon'],
@@ -46,7 +47,7 @@
             <?php } ?>
             <div class="col-12 col-md-4">
                 <?= Html::a(
-                    Yii::t('app', 'join').Icons::arrowRight(),
+                    Yii::t('app', 'join').Icons::arrowRight(30),
                     '/auth/introduction',
                     ['class' => 'btn btn-lg btn-primary h-100 px-5 d-flex align-items-center justify-content-center gap-2']
                 );?>

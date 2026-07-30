@@ -19,8 +19,8 @@ class News extends ActiveRecord
             [['body'], 'default', 'value' => null],
             [['title', 'subtitle', 'href'], 'required'],
             [['id_meta', 'id_user'], 'integer'],
-            [['is_public', 'create_date', 'update_date'], 'safe'], //, 'body'
-            [['category', 'title', 'subtitle', 'image', 'href'], 'string', 'max' => 255],
+            [['is_public', 'create_date', 'subtitle', 'update_date'], 'safe'], //, 'body'
+            [['category', 'title', 'image', 'href'], 'string', 'max' => 255],
         ];
     }
 

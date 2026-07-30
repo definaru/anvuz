@@ -78,8 +78,13 @@ class NewsController extends Controller
     public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->body == null || $model->body == '') {
+                $model->body = $model->id;
+            }
+            if($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
         return $this->render('update', ['model' => $model]);
     }

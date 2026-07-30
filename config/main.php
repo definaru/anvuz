@@ -52,6 +52,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
+                '/s/<slug:[\w_\/-]+>' => 'site/page',
                 '<action>' => 'site/<action>',
                 '/university/<href:[\w_\/-]+>' => 'site/university',
                 '/api/v1/universities/<region:[\w_\/-]+>' => 'api/universities',

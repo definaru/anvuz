@@ -20,6 +20,8 @@ use frontend\models\NewsSearch;
 use frontend\models\News;
 use frontend\models\University;
 use frontend\models\Documents;
+use frontend\models\Pages;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -99,7 +101,7 @@ class SiteController extends Controller
     }
 
 
-    public function actionDocument($href)
+    public function actionDocument(string $href)
     {
         //$href = Yii::$app->request->get('href');
         $model = Documents::find()->where(['href' => $href])->one();
@@ -193,5 +195,13 @@ class SiteController extends Controller
         return $this->render('contact', ['model' => $model, 'content' => $content]);
     }
 
+    public function actionPage(string $slug)
+    {
+        $model = Pages::findOne(['slug' => $slug]);
+        if ($model === null) {
+            throw new NotFoundHttpException('Страница не найдена, удалена, или перенесена на другой URL адрес');
+        }
+        return $this->render('page', ['model' => $model]);
+    }
 
 }

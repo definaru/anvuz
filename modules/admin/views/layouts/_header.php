@@ -35,6 +35,7 @@
                         <a class="dropdown-item" href="/admin/documents/create">Документы</a>
                         <a class="dropdown-item" href="#">Событие</a>
                         <a class="dropdown-item" href="#">Университет</a>
+                        <a class="dropdown-item" href="/admin/pages/create">Страницу</a>
                         <a class="dropdown-item" href="/admin/news/create">Новость</a>
                     </li>
                 </ul>

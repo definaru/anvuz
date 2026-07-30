@@ -74,23 +74,45 @@ class AsideData
             [
                 'icon' => 'NotebookText',
                 'title' => 'Новости',
-                'link' => 'admin/news',
+                'link' => '/admin/news/list',
                 'value' => '',
-                'list' => [
-                    [
-                        'name' => 'Список новостей',
-                        'link' => '/admin/news/list'
-                    ],
-                    [
-                        'name' => 'Архив',
-                        'link' => '/admin/news/archive'
-                    ],
-                ]
+                'list' => false
+                // 'list' => [
+                //     [
+                //         'name' => 'Список новостей',
+                //         'link' => '/admin/news/list'
+                //     ],
+                //     [
+                //         'name' => 'Архив',
+                //         'link' => '/admin/news/archive'
+                //     ],
+                // ]
             ],
             [
                 'icon' => 'mapPin',
                 'title' => 'Геолокация',
                 'link' => '/admin/location',
+                'value' => '',
+                'list' => false
+            ],
+            [
+                'icon' => '',
+                'title' => 'Контент',
+                'link' => '',
+                'value' => '',
+                'list' => 'label'
+            ],
+            [
+                'icon' => 'imagePlay',
+                'title' => 'Слайд-шоу',
+                'link' => '/admin/slider',
+                'value' => '',
+                'list' => false
+            ],
+            [
+                'icon' => 'appWindow',
+                'title' => 'Страницы сайта',
+                'link' => '/admin/pages',
                 'value' => '',
                 'list' => false
             ],

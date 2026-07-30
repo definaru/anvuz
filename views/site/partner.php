@@ -1,4 +1,7 @@
 <?php
+    /** @var array $content */
+    /** @var frontend\models\PagesSearch $searchModel */
+    /** @var yii\data\ActiveDataProvider $dataProvider */
     $this->title = $content['seo']['title'];
     $this->params['breadcrumbs'][] = 'Каталог участников';
     $this->blocks['menu'] = 'bg-white';

@@ -5,10 +5,12 @@ namespace frontend\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\web\UploadedFile;
+use yii\web\View;
 //use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use frontend\models\University;
 use frontend\models\Profiles;
+use frontend\models\Slider;
 use yii\helpers\FileHelper;
 
 
@@ -22,7 +24,18 @@ class ApiController extends Controller
                 //'only' => ['university'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'image', 'news-image', 'delete-newsimage', 'editor-markdown', 'introduction', 'university', 'universities'],
+                        'actions' => [
+                            'index', 
+                            'image', 
+                            'news-image', 
+                            'delete-newsimage', 
+                            'editor-markdown', 
+                            'introduction', 
+                            'university', 
+                            'universities',
+                            'slider-sortable',
+                            'open-menu'
+                        ],
                         'allow' => true,
                         'roles' => ['?', '@'],
                     ]
@@ -38,7 +51,9 @@ class ApiController extends Controller
             $action->id === 'introduction' || 
             $action->id === 'news-image' || 
             $action->id === 'delete-newsimage' ||
-            $action->id === 'editor-markdown'
+            $action->id === 'editor-markdown' ||
+            $action->id === 'slider-sortable' ||
+            $action->id === 'open-menu'
         ) {
             $this->enableCsrfValidation = false;
         }
@@ -182,6 +197,46 @@ class ApiController extends Controller
             ->all();
 
         return self::Responce($res);
+    }
+
+
+    /** @var array $res */
+    public function actionSliderSortable()
+    {
+        $order = Yii::$app->request->post('order');
+        $transaction = Yii::$app->db->beginTransaction();
+        $res = [];
+        try {
+            foreach ($order as $index => $id) {
+                $model = Slider::findOne($id);
+                if ($model) {
+                    $model->sort_order = $index + 1; // 1-based index
+                    if (!$model->save()) {
+                        throw new \Exception('Ошибка сохранения модели ID: ' . $id);
+                    }
+                }
+            }
+            $transaction->commit();
+            $res = [
+                'success' => true,
+                'message' => 'Порядок успешно обновлён'
+            ];
+        } catch (\Exception $e) {
+            $transaction->rollBack();
+            $res = [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+        return self::Responce($res);
+    }
+
+    public function actionOpenMenu()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $isOpen = Yii::$app->request->post('isOpen');
+        Yii::$app->session->set('sidebar_open', $isOpen);
+        return ['success' => true, 'currentState' => $isOpen];
     }
 
 }

@@ -5,6 +5,7 @@ use Yii;
 use yii\helpers\Url;
 use frontend\components\icons\Icons;
 use frontend\models\NewsSearch;
+use frontend\models\Slider;
 
 
 class Blocks
@@ -21,6 +22,10 @@ class Blocks
         $description = 'Миссия АНВУЗ это создание и развитие единого российского образовательного пространства независимо от формы учредительства образовательных организаций.';
         $image = '';
         $iconSize = 80;
+
+        // или SORT_ASC для сортировки по возрастанию
+
+
         return [
             'seo' => [
                 'canonical' => $canonical,
@@ -54,30 +59,8 @@ class Blocks
             ],  
             'content' => [
                 'dataProvider' => $dataProvider,
-                'slide' => [
-                    ['image' => '/data/news/photo/6a33feb3070fb/2036985087.jpg'],
-                    ['image' => '/site/image/slide/10yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/14yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/30yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/12yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/13yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/15yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/11yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/16yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/17yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/18yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/19yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/20yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/21yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/22yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/23yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/24yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/25yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/26yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/27yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/28yrygvrtgrth.jpg'],
-                    ['image' => '/site/image/slide/29yrygvrtgrth.jpg'],
-                ],
+                //'slide' => Slider::find()->orderBy('LENGTH(sort_order), sort_order')->all(),
+                'slide' => Slider::find()->orderBy(['sort_order' => SORT_ASC])->all(),
                 'about' => [
                     [
                         'icon' => Icons::Composition($iconSize),
